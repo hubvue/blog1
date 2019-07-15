@@ -9,7 +9,7 @@ var plugins = [{
       options: {"plugins":[]},
     },{
       plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
-      options: {"plugins":[],"name":"Gatsby Starter Blog","short_name":"GatsbyJS","start_url":"/","background_color":"#ffffff","theme_color":"#663399","display":"minimal-ui","icon":"content/assets/gatsby-icon.png"},
+      options: {"plugins":[],"name":" Blog","short_name":"GatsbyJS","start_url":"/","background_color":"#ffffff","theme_color":"#663399","display":"minimal-ui","icon":"content/assets/favicon.ico"},
     },{
       plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-offline/gatsby-ssr'),
       options: {"plugins":[]},

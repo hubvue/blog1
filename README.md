@@ -1,1 +1,2 @@
-# gatsby-blog
+# Blog
+
