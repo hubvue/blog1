@@ -1,7 +1,7 @@
 ---
 title: 手写一个Redux-simple
 date: "2019-07-15"
-description: 手写一个redux-simple
+description: 理解函数式编程思想，实现一个简单版的Redux-simple
 ---
 ## 前言
 `react`和状态管理`redux`是紧密结合的，而本身又没有任何联系。`react`可以不使用`redux`管理状态，`redux`也可以脱离`react`独立存在。随着`react`的项目越来越复杂，`state`变的繁重，各种`prop`和`state`的转变让我们在开发过程中变得头晕眼花，`react`本来就是一个专注于UI层的库，本不应该让繁杂的`prop`和`state`的逻辑掺杂进来。于是`Flux`的架构出现了，`Flux`架构模式用于抽离`react`的`state`能更好的去构建项目，`Flux`架构模式的实践有好多中，显然`redux`是成功的。
