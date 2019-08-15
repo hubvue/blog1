@@ -1,5 +1,5 @@
 ---
-title: 手写一个Redux
+title: 手写一个Redux-simple
 date: "2019-07-15"
 description: 手写一个redux-simple
 ---
