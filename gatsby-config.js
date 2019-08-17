@@ -3,7 +3,7 @@ module.exports = {
     title: `Kim Blog`,
     author: `Kim`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://kim.cckim.cn`,
     social: {
       github: `hubvue`
     },
