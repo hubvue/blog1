@@ -1,6 +1,6 @@
 ---
 title: TypeScript的配置信息
-date: "2019-07-15"
+date: "2019-08-18"
 description: 记录TypeScript的一些配置信息
 ---
 
