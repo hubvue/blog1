@@ -121,7 +121,7 @@ ExecutionContext = {
 1. 创建阶段
 2. 激活阶段
 
-**创建阶段**
+### 创建阶段
 
 所谓创建阶段就是在代码执行前为其创建执行上下文，并为其创建变量、函数、参数等：
 
@@ -171,7 +171,8 @@ ExecutionContext = {
 }
 ```
 
-**激活阶段**
+### 激活阶段
+
 激活阶段就是代码真正执行的时候了，当执行上下文进入激活阶段的时候，会对 variableObject 生成一个引用，就是我们常说的 AO(activeObject)。执行阶段会对 AO 中的属性进行复制处理(AO === VO)。还是以创建阶段的 🌰 为例吧，代码逐行解析步骤如下：
 
 此时执行上下文为
@@ -237,3 +238,226 @@ ExecutionContext = {
 以上是执行上下文在 ES3 中的具体表现，如果你对 ES6 的一些特性(let const 暂时性死区，generator)有了解的话，一定会觉得以上的东西解释不了 ES6。在 ES6 到来的时候，整体执行上下文做了更新，使用词法环境和变量环境来分别存放上下文中的变量。
 
 ## ES6
+
+ES6 的到来，我感觉带来的最大的变革就是推出了块级作用域，使用 let 和 const 来定义变量来摆脱 var 变量提升带来的困惑，同样也为执行上下文增加了复杂度，不像 ES3 时期更有直观性，更加难以理解。但是，即使道路崎岖坎坷也阻挡不了探索技术深度的决心。下面来深入探究 ES6 时期的执行上下文的到底是个什么东西。
+
+## 结构变化
+
+ES6 的执行器上下文增加了很多东西。
+
+```js
+ExecutionContext = {
+  LexicalEnvironment: {},
+  VariableEnvironment: {},
+  CodeEvaluationState: null,
+  Function: null,
+  ScriptOrModule: null,
+  Realm: null,
+  Generator: null
+}
+```
+
+1. LexicalEnvironment：词法环境，当获取变量或者 this 值的时候使用
+2. VariableEnvironment：变量环境，当生命变量时使用。
+3. CodeEvaluationState：用于恢复代码执行位置
+4. Function：执行的任务是函数时使用，表示正在执行的函数
+5. ScriptOrModule：执行的任务是脚本或者模块时使用，表示当前正在执行的代码
+6. Realm：使用的基础库和内置对象实例
+7. Generator：仅生成器上下文有这个属性，表示当前生成器
+
+以上就是目前 JavaScript 执行器上下文中的所用属性。本文以下内容仅探讨和我们代码执行有关的`LexicalEnvironment`和`VariableEnvironment`这两个。
+
+ES6 的执行器上下文同样分为创建阶段和激活阶段两种。
+
+### 创建阶段
+
+创建阶段主要用于初始化词法环境和变量环境，并初始化上下文中的变量、变量声明、函数声明等等。
+
+无论是词法环境还是变量环境中都存在三个属性：
+
+1. EnvironmentRecord：用于存放上下文中的环境记录，就是 ES3 中的 VO
+2. outer：对上层环境的引用，ES6 采用这种方式来把作用域链接成一个 outer 链条表示作用域链
+3. this：this 值的绑定
+
+EnvironmentRecord 存在两种形态：
+
+1. Object Environment：仅在全局执行上下文中出现
+2. Declarative Environment：用于存储函数声明、变量声明以及 catch 子句中的变量。仅在函数执行上下文中出现
+
+**全局执行上下文**
+
+```js
+GlobalExecutionContext = {
+  LexicalEnvironment: {
+    EnvironmentRecord: {
+      type: 'Object Environment'
+    },
+    outer: null,
+    this: <global object>
+  },
+  VariableEnvironment: {
+    EnvironmentRecord: {
+      type: 'Object Environment'
+    },
+    outer: null,
+    this: <global object>
+  }
+}
+```
+
+**函数执行上下文**
+
+```js
+GlobalExecutionContext = {
+  LexicalEnvironment: {
+    EnvironmentRecord: {
+      type: 'Declarative Environment'
+    },
+    outer: null,
+    this: <global object>
+  },
+  VariableEnvironment: {
+    EnvironmentRecord: {
+      type: 'Declarative Environment'
+    },
+    outer: null,
+    this: <global object>
+  }
+}
+```
+
+来看下面这个 🌰
+
+```js
+let a = 20
+const b = 30
+var c
+function multiply(e, f) {
+  var g = 20
+  return e * f * g
+}
+c = multiply(20, 30)
+```
+
+当代码执行的时候，首先创建全局执行上下文，其顺序如下：
+
+1. 首先找 let 和 const 声明，将其变量名做为 key 值放在 LexicalEnvironment 的 EnvironmentRecode 中，值为为初始状态：uninitialized
+2. 找函数声明，将函数名作为 key 值放在 LexicalEnvironment 的 EnvironmentRecord 中，值为函数体
+3. 找变量声明，首先判断词法环境中是否有重名的 const let 声明，如果有的话就会报错，如果没有的话则将变量名作为 key 值放在 VariableEnvironment 的 EnvironmentRecord 下，值为 undefined
+
+根据以上步骤，所创建的全局执行上下文，如下：
+
+```js
+GlobalExectionContext = {
+  LexicalEnvironment: {
+    EnvironmentRecord: {
+      Type: "Object",
+      // Identifier bindings go here
+      a: < uninitialized >,
+      b: < uninitialized >,
+      multiply: < func >
+    }
+    outer: <null>,
+    ThisBinding: <Global Object>
+  },
+  VariableEnvironment: {
+    EnvironmentRecord: {
+      Type: "Object",
+      // Identifier bindings go here
+      c: undefined,
+    }
+    outer: <null>,
+    ThisBinding: <Global Object>
+  }
+}
+```
+
+我们先跳过全局执行上下文的激活阶段，先看一下 multiply 函数的执行上下文创建状态
+
+1. 首先创建 Arguments Object,初始化其中的值，放在 LexicalEnvironment 的 EnvironmentRecord 中
+2. 一下步骤同全局执行上下文
+
+最终 multiply 的执行上下文为：
+
+```js
+FunctionExectionContext = {
+LexicalEnvironment: {
+    EnvironmentRecord: {
+      Type: "Declarative",
+      // Identifier bindings go here
+      Arguments: {0: 20, 1: 30, length: 2},
+    },
+    outer: <GlobalLexicalEnvironment>,
+    ThisBinding: <Global Object or undefined>,
+  },
+VariableEnvironment: {
+    EnvironmentRecord: {
+      Type: "Declarative",
+      // Identifier bindings go here
+      g: undefined
+    },
+    outer: <GlobalLexicalEnvironment>,
+    ThisBinding: <Global Object or undefined>
+  }
+}
+```
+
+### 激活阶段
+
+激活阶段逐行执行，与 ES3 的时候如出一辙。唯一需要注意的地方是，let 和 const 的声明会首先将值设置为`uninitialized`状态，如果在声明之上使用其变量就会出现暂时性死区的现象。
+
+全局执行上下文的激活状态最终为：
+
+```js
+GlobalExectionContext = {
+LexicalEnvironment: {
+    EnvironmentRecord: {
+      Type: "Object",
+      // Identifier bindings go here
+      a: 20,
+      b: 30,
+      multiply: < func >
+    }
+    outer: <null>,
+    ThisBinding: <Global Object>
+  },
+VariableEnvironment: {
+    EnvironmentRecord: {
+      Type: "Object",
+      // Identifier bindings go here
+      c: undefined,
+    }
+    outer: <null>,
+    ThisBinding: <Global Object>
+  }
+}
+```
+
+multiply 函数的执行上下文的激活状态为：
+
+```js
+FunctionExectionContext = {
+LexicalEnvironment: {
+    EnvironmentRecord: {
+      Type: "Declarative",
+      // Identifier bindings go here
+      Arguments: {0: 20, 1: 30, length: 2},
+    },
+    outer: <GlobalLexicalEnvironment>,
+    ThisBinding: <Global Object or undefined>,
+  },
+VariableEnvironment: {
+    EnvironmentRecord: {
+      Type: "Declarative",
+      // Identifier bindings go here
+      g: 20
+    },
+    outer: <GlobalLexicalEnvironment>,
+    ThisBinding: <Global Object or undefined>
+  }
+}
+```
+
+## 结束语
+
+一门语言的学习必定要学习其内部的执行机制，自我感觉明白了 JavaScript 执行上下文之后，在代码层面上更加了解执行顺序，容错率高了很多。毕竟，知己知彼，百战百胜嘛。
