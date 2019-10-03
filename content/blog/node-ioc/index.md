@@ -50,6 +50,7 @@ const orderController = new OrderController()
 上面是没有依赖注入的情况，可以看出`OrderController`类严重耦合了`Order`类。上面的`OrderController`类依赖了`Order`类，所以在使用的时候就必须先`require` `Order`类，才可以在`OrderController`类中使用。耦合性太高，假如我们需要把`Order`类文件移动到了别的目录，那么所有依赖这个类的文件都需要变化。
 
 **DI**
+
 沿用上面两个类，我们来看一下依赖注入的情况。
 
 ```js
@@ -183,7 +184,7 @@ class IOC {
 
 以上的代码完全可以做到 IOC 的功能。
 
-## 添加小菜
+## 添油加醋
 
 运行在服务器上的代码，当我们去做测试的时候，肯定不能直接使用运行时的代码。随意我们给 IOC 添油加醋，做一个测试所用的容器。
 
