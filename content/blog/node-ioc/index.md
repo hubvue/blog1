@@ -18,7 +18,7 @@ description: 模块间解耦，IOC在Node上的实战
 
 **noDI**
 
-这里有两个类，一个是数据库类，一个是订单类。
+这里有两个类，一个是订单模块类，一个是订单控制器类。
 
 ```js
 // 订单model类   models/Order.js
