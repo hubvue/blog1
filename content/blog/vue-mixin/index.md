@@ -1,5 +1,5 @@
 ---
-title: Vue的mixin机制解析
+title: Vue的mixin机制及mergeOptions解析
 date: '2019-10-20'
 description: 深入源码解析Vue的mixin机制
 ---
