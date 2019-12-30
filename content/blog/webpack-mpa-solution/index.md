@@ -2,6 +2,7 @@
 title: webpack多页面打包方案
 date: '2019-10-11'
 description: 分析webpack打包多页的痛点，统一规则，动态配置解决
+category: Webpack
 ---
 
 ## webpack 打包多页的痛点

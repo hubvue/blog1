@@ -1,7 +1,8 @@
 ---
 title: Flutter：路由管理
-date: "2019-12-06"
+date: '2019-12-06'
 description: Flutter页面间路由管理
+category: Flutter
 ---
 
 无论是前端浏览器页面还是端上 App 路由管理是必不可少的，路由可以让页面间跳转更加流畅。因 Flutter 万物皆 Widget 的特定，路由的跳转其实也就是切换不同的 Widget，这和前端思想很相似（组件化开发），因此很好理解。接下来就看一下 Flutter 中组件是怎么切换的。
@@ -289,12 +290,12 @@ Navigator.of(context).pushNamed('about');
 
 当使用命名路由的时候，由于在激活路由跳转的时候并不能操作路由 Widget 了，所以之前的一种传值就不能满足当前的写法。
 
-`Navigator.pushNamed()`方法提供arguments的可选命名参数，arguments就是需要转递到下一个路由的值。
+`Navigator.pushNamed()`方法提供 arguments 的可选命名参数，arguments 就是需要转递到下一个路由的值。
 
-
-在下一个路由中使用`ModalRoute.of(context).settings.arguments`就可以取到arguments。
+在下一个路由中使用`ModalRoute.of(context).settings.arguments`就可以取到 arguments。
 
 例如：
+
 ```dart
 // 传值
 Navigator.of(context).pushNamed('about', arguments: 'Hello world');
@@ -305,9 +306,11 @@ print('上一个路由传过来的值：$result');
 ```
 
 ### 如何管理路由
-在写Vue和React的时候我们是把所有的页面放在pages目录下，创建一个routes目录，在这里做路由的统一管理。Flutter也是一个UI库，其思想和前端框架并不相差太多，所以也可以使用这种工程目录结构。
+
+在写 Vue 和 React 的时候我们是把所有的页面放在 pages 目录下，创建一个 routes 目录，在这里做路由的统一管理。Flutter 也是一个 UI 库，其思想和前端框架并不相差太多，所以也可以使用这种工程目录结构。
 
 我们来简单定义一个工程目录结构。
+
 ```txt
  /--
   |--pages
@@ -318,7 +321,8 @@ print('上一个路由传过来的值：$result');
   - main.dart
 ```
 
-在index.dart中定义路由表。
+在 index.dart 中定义路由表。
+
 ```dart
 //引入Material风格Widget
 import 'package:flutter/material.dart';
@@ -332,7 +336,9 @@ Map routes = <String, WidgetBuilder> {
   'about': AboutPage()
 }
 ```
-在main.dart中引入`routes/index.dart`,并将routes注册到MaterialApp中。
+
+在 main.dart 中引入`routes/index.dart`,并将 routes 注册到 MaterialApp 中。
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/routes/index.dart';
@@ -359,8 +365,9 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-这样在写Flutter项目的时候就和写前端项目的体验相同了。
 
+这样在写 Flutter 项目的时候就和写前端项目的体验相同了。
 
 ### 总结
-Flutter对前端来说还是很友好的，无论是dart语言还是Flutter框架的整体思想上和前端框架有很多相似的地方，个人感觉接收起来还是比较容易的，毕竟思想大致相同。Flutter已经归属到了大前端体系下，值得尝试。
+
+Flutter 对前端来说还是很友好的，无论是 dart 语言还是 Flutter 框架的整体思想上和前端框架有很多相似的地方，个人感觉接收起来还是比较容易的，毕竟思想大致相同。Flutter 已经归属到了大前端体系下，值得尝试。

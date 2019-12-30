@@ -2,6 +2,7 @@
 title: 浅析从加载到new Vue()--Vue做了什么？
 date: '2019-09-30'
 description: 深入源码探究Vue从加载到new Vue()之前到底做了什么事情。
+category: Vue
 ---
 
 本文主要深入源码分析我们在`new Vue()`之前 Vue 到底做了哪些事情。

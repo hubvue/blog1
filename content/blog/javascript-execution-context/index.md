@@ -2,6 +2,7 @@
 title: 深入了解JavaScript执行上下文
 date: '2019-09-27'
 description: 深入JavaScript内部执行机制，了解JavaScript执行器上下文。
+category: JavaScript
 ---
 
 ## 前言

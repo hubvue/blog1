@@ -2,6 +2,7 @@
 title: Vue源码构建过程-不同平台&不同环境
 date: '2019-09-28'
 description: 深入源码探究Vue源代码的构建过程。
+category: Vue
 ---
 
 ### 整体 build 过程

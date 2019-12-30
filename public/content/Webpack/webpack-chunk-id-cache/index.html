@@ -1,0 +1,686 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:100%/1.75 'Merriweather','Georgia',serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.9);font-family:'Merriweather','Georgia',serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:Montserrat,sans-serif;font-weight:900;text-rendering:optimizeLegibility;font-size:2.5rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1.73286rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1.4427rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;letter-spacing:0.140625em;text-transform:uppercase;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:0.83255rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:0.75966rem;line-height:1.1;font-style:italic;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}ul{margin-left:1.75rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;list-style-position:outside;list-style-image:none;list-style:disc;}ol{margin-left:1.75rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:0.85rem;line-height:1.75rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:1rem;line-height:1.75rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}blockquote{margin-left:-1.75rem;margin-right:1.75rem;margin-top:0;padding-bottom:0;padding-left:1.42188rem;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:1.20112rem;line-height:1.75rem;color:inherit;font-style:italic;border-left:0.32813rem solid hsla(0,0%,0%,0.9);border-left-color:inherit;opacity:0.8;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.75rem - 1px);background:var(--hr);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.75rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.75rem;margin-bottom:calc(1.75rem / 2);margin-top:calc(1.75rem / 2);}li > ul{margin-left:1.75rem;margin-bottom:calc(1.75rem / 2);margin-top:calc(1.75rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.75rem / 2);}code{font-size:0.85rem;line-height:1.75rem;}kbd{font-size:0.85rem;line-height:1.75rem;}samp{font-size:0.85rem;line-height:1.75rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1.16667rem;padding-right:1.16667rem;padding-top:0.875rem;padding-bottom:calc(0.875rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}blockquote > :last-child{margin-bottom:0;}blockquote cite{font-size:1rem;line-height:1.75rem;color:hsla(0,0%,0%,0.9);font-weight:400;}blockquote cite:before{content:"— ";}ul,ol{margin-left:0;}@media only screen and (max-width:480px){ul,ol{margin-left:1.75rem;}blockquote{margin-left:-1.3125rem;margin-right:0;padding-left:0.98438rem;}}h1,h2,h3,h4,h5,h6{margin-top:3.5rem;}a{box-shadow:0 1px 0 0 currentColor;color:var(--textLink);text-decoration:none;}a:hover,a:active{box-shadow:none;}mark,ins{background:#007acc;color:white;padding:0.10938rem 0.21875rem;text-decoration:none;}a.gatsby-resp-image-link{box-shadow:none;}a.anchor{box-shadow:none;}a.anchor svg[aria-hidden="true"]{stroke:var(--textLink);}p code{font-size:1rem;}h1 code, h2 code, h3 code, h4 code, h5 code, h6 code{font-size:inherit;}li code{font-size:1rem;}blockquote.translation{font-size:1em;}</style><style data-href="/styles.e13375a039c65980e5a0.css">@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-4124805c0503dbfe42dd67d7f5715964.woff2) format("woff2"),url(/static/montserrat-latin-100-c8fb2f714bbc7bc3e8dfffa916b286dc.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e4bf47bd171a9b2a72dd84c58bf90edf.woff2) format("woff2"),url(/static/montserrat-latin-100italic-d1f3f2d02ee4d7d2d4b1ad865014f189.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-444ae007121264bc1969d49b4031f9b2.woff2) format("woff2"),url(/static/montserrat-latin-200-edbce16a90aa22c297a0307b85789837.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-f316c5d1ec40f3e68654c3f38b3999f3.woff2) format("woff2"),url(/static/montserrat-latin-200italic-d7bbb730d9b5e11720b3eb32326dcca7.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-0a7c6df06e85d978d096d4d18fd8d43d.woff2) format("woff2"),url(/static/montserrat-latin-300-5e86df2cad22d2ef2b03516334afae5e.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-c076c4892bc7a4be7b9097e97a35012d.woff2) format("woff2"),url(/static/montserrat-latin-300italic-37c74a8d2d0d36a0a2c6e9a37ee15b0c.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-501ce09c42716a2f6e1503a25eb174c9.woff2) format("woff2"),url(/static/montserrat-latin-400-f29d2b8559699b6beb5b29b25b8bc572.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-882908d9950d9c86ebd380877f293d95.woff2) format("woff2"),url(/static/montserrat-latin-400italic-22e7b04e5f2a901d49d4d342315a715a.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-f0f2716c5fe401d175b88715e7d28685.woff2) format("woff2"),url(/static/montserrat-latin-500-991b453bf90a0980e78966d2af7e3d3a.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-4590ebba421b3288c305305d7fa7b504.woff2) format("woff2"),url(/static/montserrat-latin-500italic-f3d41e4cdcc2314e49ddcea751d6f87f.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-15c24f7109941777774ddd2c636c6a50.woff2) format("woff2"),url(/static/montserrat-latin-600-f6dc6096f48956908c1787d9a722570a.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-6d10b80529d5c36c7c09fca7193af0fc.woff2) format("woff2"),url(/static/montserrat-latin-600italic-02c4833312d94b1b0866f073023a250e.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-79982cd1f74c6fa7451bf9b37ead09ff.woff2) format("woff2"),url(/static/montserrat-latin-700-957e93fbbe131a59791cd820d98b7109.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-283438e9577fe6a684466bb100e105ec.woff2) format("woff2"),url(/static/montserrat-latin-700italic-ca627c5ccc65cf80c2ecaea44b997de9.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-35386154b78d046218fc8f88a44ff515.woff2) format("woff2"),url(/static/montserrat-latin-800-756655905d91b77960888262e7d58d35.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-e1b52a7bd83e2324db6d92bdc206844c.woff2) format("woff2"),url(/static/montserrat-latin-800italic-a69f0add9d86c1a84311d7dd8693ba4a.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-260c2ea3ef57feb82251952e605a36d5.woff2) format("woff2"),url(/static/montserrat-latin-900-186cae8091da578150d81958e217714a.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-d785fb9fc74588ffb7f306799709a97d.woff2) format("woff2"),url(/static/montserrat-latin-900italic-43b527fe77254f97ea36e2b54e845ec4.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:300;src:local("Merriweather Light "),local("Merriweather-Light"),url(/static/merriweather-latin-300-b1158cfcd4aacb9d8fb61625e37af46a.woff2) format("woff2"),url(/static/merriweather-latin-300-cc7de05e166e90320d7d896e0f72a19d.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:300;src:local("Merriweather Light italic"),local("Merriweather-Lightitalic"),url(/static/merriweather-latin-300italic-8fe52a48089d6ebe46db0b8e7cc66263.woff2) format("woff2"),url(/static/merriweather-latin-300italic-e1331f5397c2a673f9d3765138debdb5.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:400;src:local("Merriweather Regular "),local("Merriweather-Regular"),url(/static/merriweather-latin-400-8276fdb72ae8f4714d4e6eba704cc39f.woff2) format("woff2"),url(/static/merriweather-latin-400-69f09800f4f6479d06e44eba837df872.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:400;src:local("Merriweather Regular italic"),local("Merriweather-Regularitalic"),url(/static/merriweather-latin-400italic-3a9be9ea9f7aa4af6de7307df21d9fc0.woff2) format("woff2"),url(/static/merriweather-latin-400italic-d76079ed7541a433a54f79316de086e9.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:700;src:local("Merriweather Bold "),local("Merriweather-Bold"),url(/static/merriweather-latin-700-fa534be7ffa380e39a7f6e03bf9a5e03.woff2) format("woff2"),url(/static/merriweather-latin-700-ba56ea84b8084b7ff9677f50d3cd81bd.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:700;src:local("Merriweather Bold italic"),local("Merriweather-Bolditalic"),url(/static/merriweather-latin-700italic-1ef5edaaa20ae53ea50399884c5e48c6.woff2) format("woff2"),url(/static/merriweather-latin-700italic-534bc9e7ce93c73d73426e46acd78092.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:900;src:local("Merriweather Black "),local("Merriweather-Black"),url(/static/merriweather-latin-900-7528fb70e8a4a82c7305e72ff43ac25f.woff2) format("woff2"),url(/static/merriweather-latin-900-3799b6e2f5ed3fcccf9d7a708d7419fa.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:900;src:local("Merriweather Black italic"),local("Merriweather-Blackitalic"),url(/static/merriweather-latin-900italic-e1b4d2aaa78e12ad84aaf8a56321e4c2.woff2) format("woff2"),url(/static/merriweather-latin-900italic-2ae22f731b3424e8dbb4b37f7ca6e708.woff) format("woff")}body{--pink:#ffa7c4;background-color:var(--bg)}body.light{--bg:#fff;--header:var(--pink);--textNormal:#222;--textTitle:#222;--textLink:#d23669;--hr:rgba(0,0,0,0.2);--inlineCode-bg:rgba(255,229,100,0.2);--inlineCode-text:#1a1a1a}body.dark{-webkit-font-smoothing:antialiased;--bg:#282c35;--header:#fff;--textNormal:hsla(0,0%,100%,0.88);--textTitle:#fff;--textLink:var(--pink);--hr:hsla(0,0%,100%,0.2);--inlineCode-bg:#373c49;--inlineCode-text:#e6e6e6}body:lang(ar) article,body:lang(fa) article{direction:rtl}body:lang(ar) .language-text,body:lang(ar) article .translations,body:lang(ar) article pre,body:lang(fa) .language-text,body:lang(fa) article .translations,body:lang(fa) article pre{direction:ltr}body:lang(ar) .language-text,body:lang(fa) .language-text{display:inline-block}body:lang(ar) blockquote,body:lang(fa) blockquote{border-left:unset;border-right:.32813rem solid rgba(0,0,0,.9);padding-right:1.42188rem;padding-left:unset;margin-left:.75rem;margin-right:-1.75rem}body:lang(fa) article,body:lang(fa) header>h1{font-family:Vazir}body:lang(ar) article,body:lang(ar) header>h1{font-family:Cairo,sans-serif}body:lang(ko) article,body:lang(ko) header{word-break:keep-all}code[class*=language-],pre[class*=language-]{color:#fff;background:none;font-family:Consolas,Menlo,Monaco,source-code-pro,Courier New,monospace;font-feature-settings:normal;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;margin-bottom:0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{overflow:auto;padding:1.3125rem}pre[class*=language-]::-moz-selection{background:#27292a}pre[class*=language-]::selection{background:#27292a}pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{text-shadow:none;background:hsla(0,0%,100%,.15)}pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:hsla(0,0%,100%,.15)}:not(pre)>code[class*=language-]{border-radius:.3em;background:var(--inlineCode-bg);color:var(--inlineCode-text);padding:.15em .2em .05em;white-space:normal}.token.attr-name{color:#addb67;font-style:italic}.token.comment{color:#809393}.token.string,.token.url{color:#addb67}.token.variable{color:#d6deeb}.token.number{color:#f78c6c}.token.builtin,.token.char,.token.constant,.token.function{color:#82aaff}.token.punctuation{color:#c792ea}.token.doctype,.token.selector{color:#c792ea;font-style:"italic"}.token.class-name{color:#ffcb8b}.token.keyword,.token.operator,.token.tag{color:#ffa7c4}.token.boolean{color:#ff5874}.token.property{color:#80cbc4}.token.namespace{color:#b2ccd6}pre[data-line]{padding:1em 0 1em 3em;position:relative}.gatsby-highlight-code-line{background-color:#022a4b;display:block;padding-right:1em;padding-left:1.25em;border-left:.25em solid #ffa7c4}.gatsby-highlight,.gatsby-highlight-code-line{margin-right:-1.3125rem;margin-left:-1.3125rem}.gatsby-highlight{margin-bottom:1.75rem;border-radius:10px;background:#011627;-webkit-overflow-scrolling:touch;overflow:auto}@media (max-width:672px){.gatsby-highlight{border-radius:0}}.gatsby-highlight pre[class*=language-]{float:left;min-width:100%}@font-face{font-display:swap;font-family:Merriweather;font-style:normal;font-weight:400;src:url(/static/merriweather-400-l-8796b7875d52e9cb9b280211e8d3f82d.woff2) format("woff2");unicode-range:U+00??,U+0131,U+0152-0153,U+02bb-02bc,U+02c6,U+02da,U+02dc,U+2000-206f,U+2074,U+20ac,U+2122,U+2191,U+2193,U+2212,U+2215,U+feff,U+fffd}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:url(/static/montserrat-900-l-5751237264c0468be0d48ad1cea75b90.woff2) format("woff2");unicode-range:U+00??,U+0131,U+0152-0153,U+02bb-02bc,U+02c6,U+02da,U+02dc,U+2000-206f,U+2074,U+20ac,U+2122,U+2191,U+2193,U+2212,U+2215,U+feff,U+fffd}.category-wrap{display:flex;flex-wrap:wrap;list-style:none}.category-item{margin-left:10px;color:#d33669;cursor:pointer}.category-item_count{font-size:12px}</style><meta name="generator" content="Gatsby 2.18.17"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="icon" href="/icons/icon-48x48.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=a27ad4ad2f26592bc82025607a57f180"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=a27ad4ad2f26592bc82025607a57f180"/><title data-react-helmet="true">深入webpack的chunkId对线上缓存的思考 </title><meta data-react-helmet="true" name="description" content="深入webpack的chunkIds的生成原理，剖析chunkIds对线上缓存的破坏，提出完美的解决办法。"/><meta data-react-helmet="true" property="og:title" content="深入webpack的chunkId对线上缓存的思考"/><meta data-react-helmet="true" property="og:description" content="深入webpack的chunkIds的生成原理，剖析chunkIds对线上缓存的破坏，提出完美的解决办法。"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Kim"/><meta data-react-helmet="true" name="twitter:title" content="深入webpack的chunkId对线上缓存的思考"/><meta data-react-helmet="true" name="twitter:description" content="深入webpack的chunkIds的生成原理，剖析chunkIds对线上缓存的破坏，提出完美的解决办法。"/><link as="script" rel="preload" href="/webpack-runtime-de23e6db0a11f0440c98.js"/><link as="script" rel="preload" href="/app-72547bc230da748b1080.js"/><link as="script" rel="preload" href="/styles-adcbea1dfe5f9bdb9878.js"/><link as="script" rel="preload" href="/commons-261e339cd776e27ea27f.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-1449881ee96972f875f7.js"/><link as="fetch" rel="preload" href="/page-data/content/Webpack/webpack-chunk-id-cache/page-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><div style="margin-left:auto;margin-right:auto;max-width:42rem;padding:2.625rem 1.3125rem"><header><h3 style="font-family:Montserrat, sans-serif;margin-top:0"><a style="box-shadow:none;text-decoration:none;color:inherit" href="/">Kim Blog</a></h3></header><main><h2 style="margin-top:1.75rem;margin-bottom:0">深入webpack的chunkId对线上缓存的思考</h2><p style="font-size:0.83255rem;line-height:1.75rem;display:block;margin-bottom:1.75rem">August 26, 2019</p><div><h2>前言</h2>
+<p>想必经常使用基于 webpack 打包工具的框架的同学们，无论是使用 React 还是 Vue 在性能优化上使用最多的应该是分包策略（按需加载）。按需加载的方式使我们的每一个 bundle 变的更小，在每一个单页中只需要引入当前页所使用到的 JavaScript 代码，从而提高了代码的加载速度。但是，由于 webpack 目前版本自身的原因分包策略虽然可以提高我们的加载速度，但是在线上缓存方面却给了我们极大的破坏(webpack5 中解决了这个问题)。</p>
+<p>本文主要通过以下四个方面，来深入剖析 chunkId：</p>
+<ul>
+<li>chunkId 是怎么生成的？</li>
+<li>chunkId 是怎么破坏线上缓存的？</li>
+<li>解决 chunkId 对破坏缓存的方法</li>
+<li>远观未来，webpack5 完美解决</li>
+</ul>
+<h2>chunkId 的生成策略是什么？</h2>
+<p>webpack 是一个基于模块化的打包工具，其总体打包流程可分为：</p>
+<ol>
+<li>初始化阶段</li>
+<li>编译阶段</li>
+<li>输出阶段</li>
+</ol>
+<p><strong>初始化阶段</strong></p>
+<p>webpack 初始化阶段主要在 webpack.js 中完成，有以下方面：</p>
+<ul>
+<li>webpack-cli 启动，获取 webpack.config.js 配置及合并 shell 参数</li>
+<li>根据 cli 得到的配置合并默认配置</li>
+<li>创建 compiler 实例</li>
+<li>遍历配置中的 plugins 加载第三方插件</li>
+<li>初始化默认插件</li>
+</ul>
+<p><strong>编译阶段</strong></p>
+<p>初始化完成之后，cli 得到 compiler 实例，执行 compiler.run()开始编译，编译的过程主要分为以下步骤：</p>
+<ul>
+<li>分析 entry，逐一遍历</li>
+<li>确定依赖模块，递归解析</li>
+<li>分包策略确定每一个 chunk 所包含的 module，合并 module 生成 chunk。</li>
+<li>确定模块资源</li>
+<li>根据 chunk 的 entry 的不同，确定输出 template 模板。</li>
+</ul>
+<p><strong>输出阶段</strong></p>
+<ul>
+<li>输出文件</li>
+</ul>
+<p>上面简单了解一下打包流程，当然最主要的目的不是为了了解打包流程，而是其中的一个点：<strong>chunk 是怎么生成的</strong></p>
+<p>从编译阶段中可以看出，chunk 是由多个 module 合并生成的，每一个 chunk 生成的时候都会有一个对应的 chunkId，chunkId 的生成策略是本节讨论的重点。</p>
+<p>chunkId 的生成策略可以在<a href="https://webpack.js.org/configuration/optimization/#optimizationchunkids">官网</a>中找到，主要有五种规则：</p>
+<ol>
+<li>false：不适用任何算法，通过插件提供自定义算法。</li>
+<li>natural：自然数 ID</li>
+<li>named：使用 name 值作为 Id，可读性高。</li>
+<li>size：数字 ID，依据最小的初始下载大小。</li>
+<li>total-size：数字 ID，依据最小的总下载大小。</li>
+</ol>
+<p>不同的生成规则所打包出来的 chunkId 是不同的。但是，其实内部生成方式是一样的，不同的规则只是对 chunks 中的 chunk 排序规则不同(说的什么玩意，什么一会相同，一会不同的)。不要着急，接下来就来看一下这东西到底是怎么生成的。</p>
+<p>我们都知道 webpack 的 optimization 中有个 chunkIds 的配置，上面五种值，就是它的可选值。在开发环境下默认值为 named，在生产环境下默认值为 size。</p>
+<p>在 webpack 初始化阶段会挂载内部插件，我们直接定位到<code class="language-text">WebpackOptionsApply.js</code>这个文件的第 437 行。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>chunkIds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> NaturalChunkOrderPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./optimize/NaturalChunkOrderPlugin'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> NamedChunksPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./NamedChunksPlugin'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> OccurrenceChunkOrderPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./optimize/OccurrenceChunkOrderPlugin'</span><span class="token punctuation">)</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>chunkIds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'natural'</span><span class="token punctuation">:</span>
+      <span class="token keyword">new</span> <span class="token class-name">NaturalChunkOrderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span>
+      <span class="token keyword">break</span>
+    <span class="token keyword">case</span> <span class="token string">'named'</span><span class="token punctuation">:</span>
+      <span class="token keyword">new</span> <span class="token class-name">OccurrenceChunkOrderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        prioritiseInitial<span class="token punctuation">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span>
+      <span class="token keyword">new</span> <span class="token class-name">NamedChunksPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span>
+      <span class="token keyword">break</span>
+    <span class="token keyword">case</span> <span class="token string">'size'</span><span class="token punctuation">:</span>
+      <span class="token keyword">new</span> <span class="token class-name">OccurrenceChunkOrderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        prioritiseInitial<span class="token punctuation">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span>
+      <span class="token keyword">break</span>
+    <span class="token keyword">case</span> <span class="token string">'total-size'</span><span class="token punctuation">:</span>
+      <span class="token keyword">new</span> <span class="token class-name">OccurrenceChunkOrderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        prioritiseInitial<span class="token punctuation">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span>
+      <span class="token keyword">break</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">webpack bug: chunkIds: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>chunkIds<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is not implemented</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>上面代码中可以看到，在初始化阶段不同的 chunkIds 的值会加载不同的插件，并且进入这个插件内部你会发现他们都是挂载到<code class="language-text">compilation.hooks.optimizeChunkOrder</code>这个钩子上。那么疑问来了，这个钩子是在什么时机执行的呢？定位到<code class="language-text"></code>compilation.js`的第 1334 行会得到答案。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">//这个钩子主要做的是确定以什么规则生成chunkId</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>hooks<span class="token punctuation">.</span><span class="token function">optimizeChunkOrder</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>chunks<span class="token punctuation">)</span>
+<span class="token comment">//生成前所要做的事，注：我们可以在这里做手脚</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>hooks<span class="token punctuation">.</span><span class="token function">beforeChunkIds</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>chunks<span class="token punctuation">)</span>
+<span class="token comment">//生成chunkId</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">applyChunkIds</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>hooks<span class="token punctuation">.</span><span class="token function">optimizeChunkIds</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>chunks<span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>hooks<span class="token punctuation">.</span><span class="token function">afterOptimizeChunkIds</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>chunks<span class="token punctuation">)</span></code></pre></div>
+<p>在执行流程中可以看出，chunkId 在生成前确定生成规则。可能你的疑问又来了，它是怎么根据 chunkId 的值的不同生成规则呢？其实所有的 chunk 都存放在一个数组里面(也就是 chunks)，在<code class="language-text">optimizeChunkOrder</code>中根据规则的不同对 chunk 进行相应的排序，然后再<code class="language-text">applyChunkIds</code>统一的对<code class="language-text">chunk.id</code>进行赋值。眼见为实，我们先来看一下 applyChunkIds 中是怎么赋值的,定位到 compilation.js 中的 1754 行。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> nextFreeChunkId <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> indexChunk <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> indexChunk <span class="token operator">&lt;</span> chunks<span class="token punctuation">.</span>length<span class="token punctuation">;</span> indexChunk<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> chunk <span class="token operator">=</span> chunks<span class="token punctuation">[</span>indexChunk<span class="token punctuation">]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>chunk<span class="token punctuation">.</span>id <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>unusedIds<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      chunk<span class="token punctuation">.</span>id <span class="token operator">=</span> unusedIds<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      chunk<span class="token punctuation">.</span>id <span class="token operator">=</span> nextFreeChunkId<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>chunk<span class="token punctuation">.</span>ids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    chunk<span class="token punctuation">.</span>ids <span class="token operator">=</span> <span class="token punctuation">[</span>chunk<span class="token punctuation">.</span>id<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>这生成过程中判断 chunk.id 是否为 null，如果为 null，对 id 赋值 nextFreeChunkId。没错，无论是什么生成规则，都是这样赋值的。明白了所有的生成规则都是使用相同的赋值规则之后，我们现在的疑问应该就是每个规则中是怎么对 chunks 进行排序的？接下来就来看一下每个规则是怎么做的。</p>
+<h3>natural</h3>
+<p>在<code class="language-text">WebpackOptionsApply.js</code>中我们可以知道，chunkIds 值为 natural 的时候，挂载的是<code class="language-text">NaturalChunkOrderPlugin</code>这个插件。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">compilation<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>optimizeChunkOrder<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">'NaturalChunkOrderPlugin'</span><span class="token punctuation">,</span> <span class="token parameter">chunks</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//排序</span>
+  chunks<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">chunkA<span class="token punctuation">,</span> chunkB</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">//得到modulesIterable的iterator遍历器</span>
+    <span class="token keyword">const</span> a <span class="token operator">=</span> chunkA<span class="token punctuation">.</span>modulesIterable<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> chunkB<span class="token punctuation">.</span>modulesIterable<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> aItem <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> bItem <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>aItem<span class="token punctuation">.</span>done <span class="token operator">&amp;&amp;</span> bItem<span class="token punctuation">.</span>done<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>aItem<span class="token punctuation">.</span>done<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>bItem<span class="token punctuation">.</span>done<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span>
+      <span class="token comment">//获取到module的id</span>
+      <span class="token keyword">const</span> aModuleId <span class="token operator">=</span> aItem<span class="token punctuation">.</span>value<span class="token punctuation">.</span>id
+      <span class="token keyword">const</span> bModuleId <span class="token operator">=</span> bItem<span class="token punctuation">.</span>value<span class="token punctuation">.</span>id
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>aModuleId <span class="token operator">&lt;</span> bModuleId<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>aModuleId <span class="token operator">></span> bModuleId<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>首先，在每一个 chunk 中都有一个<code class="language-text">modulesIterable</code>这个属性，它是一个<code class="language-text">Set</code>,里面存放的是所有合并当前的 module，每个 module 的 id 属性表示当前 module 的<code class="language-text">相对路径</code>。<code class="language-text">NaturalChunkOrderPlugin</code>主要做的事就是根据 moduleId 来最为排序规则进行排序。</p>
+<h3>named</h3>
+<p>named 的生成规则比较简单，根据 chunk 的 name 取值</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">NamedChunksPlugin</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function">defaultNameResolver</span><span class="token punctuation">(</span><span class="token parameter">chunk</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> chunk<span class="token punctuation">.</span>name <span class="token operator">||</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">nameResolver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>nameResolver <span class="token operator">=</span> nameResolver <span class="token operator">||</span> NamedChunksPlugin<span class="token punctuation">.</span>defaultNameResolver
+  <span class="token punctuation">}</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    compiler<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>compilation<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">'NamedChunksPlugin'</span><span class="token punctuation">,</span> <span class="token parameter">compilation</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      compilation<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>beforeChunkIds<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">'NamedChunksPlugin'</span><span class="token punctuation">,</span> <span class="token parameter">chunks</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> chunk <span class="token keyword">of</span> chunks<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>chunk<span class="token punctuation">.</span>id <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            chunk<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">nameResolver</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>named 与其他方式的区别在于，named 不是在<code class="language-text">optimizeChunkOrder</code>中对 chunkId 操作，而是在 beforeChunkIds 阶段。<code class="language-text">NamedChunksPlugin</code>所做的事是遍历所有的 chunk，判断 chunk 的 id 值是否为 null，如果为 null，取到 chunk 的 name 值赋予 id。</p>
+<p>当执行<code class="language-text">applyChunkIds</code>的时候，由于当前的 id 值已经不是 null 了，所以跳过赋值规则，直接使用已存在的值。</p>
+<h3>size 和 total-size</h3>
+<p>size 和 total-size 规则由于调用的是相同的插件，只是参数的不同，所以我们就一起看一下它是怎么做的。打开<code class="language-text">OccurrenceChunkOrderPlugin.js</code>文件。</p>
+<p><strong>size 和 total-size</strong>调用插件的区别：</p>
+<ol>
+<li>size 规则：prioritiseInitial 为 true。</li>
+<li>total-size 规则：prioritiseInitial 为 false。</li>
+</ol>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> prioritiseInitial <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>options<span class="token punctuation">.</span>prioritiseInitial<span class="token punctuation">;</span>
+	compiler<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>compilation<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">"OccurrenceOrderChunkIdsPlugin"</span><span class="token punctuation">,</span><span class="token parameter">compilation</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+		compilation<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>optimizeChunkOrder<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">"OccurrenceOrderChunkIdsPlugin"</span><span class="token punctuation">,</span><span class="token parameter">chunks</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+			<span class="token keyword">const</span> occursInInitialChunksMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">const</span> originalOrder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> c <span class="token keyword">of</span> chunks<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">let</span> occurs <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+				<span class="token comment">//得到chunk的chunkGroup</span>
+				<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> chunkGroup <span class="token keyword">of</span> c<span class="token punctuation">.</span>groupsIterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				    <span class="token comment">//查看当前模块有没有被其它模块引用</span>
+					<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> parent <span class="token keyword">of</span> chunkGroup<span class="token punctuation">.</span>parentsIterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					    <span class="token comment">//isInitial方法始终返回true</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">.</span><span class="token function">isInitial</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> occurs<span class="token operator">++</span><span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+				occursInInitialChunksMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> occurs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				originalOrder<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">//排序</span>
+			chunks<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+			    <span class="token comment">//如果规则是size，prioritiseInitial为true，通过父模块的数量来排序。如果父模块相同，则按照和total-size相同的规则排序。</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>prioritiseInitial<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">const</span> aEntryOccurs <span class="token operator">=</span> occursInInitialChunksMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">const</span> bEntryOccurs <span class="token operator">=</span> occursInInitialChunksMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>aEntryOccurs <span class="token operator">></span> bEntryOccurs<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>aEntryOccurs <span class="token operator">&lt;</span> bEntryOccurs<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+				<span class="token comment">//得到groups的大小，内部调用this._group.size</span>
+				<span class="token keyword">const</span> aOccurs <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">getNumberOfGroups</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">const</span> bOccurs <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">getNumberOfGroups</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>aOccurs <span class="token operator">></span> bOccurs<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>aOccurs <span class="token operator">&lt;</span> bOccurs<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+				<span class="token comment">//依据chunk在chunks中的索引位置排序</span>
+				<span class="token keyword">const</span> orgA <span class="token operator">=</span> originalOrder<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">const</span> orgB <span class="token operator">=</span> originalOrder<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> orgA <span class="token operator">-</span> orgB<span class="token punctuation">;</span>
+	    	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>OccurrenceChunkOrderPlugin 通过 prioritiseInitial 区分是 size 还是 total-size：</p>
+<ul>
+<li>prioritiseInitial 为 true：根据父模块的数量排序，如果数量相同走 total-size 的逻辑。</li>
+<li>prioritiseInitial 为 false：首先根据 chunk 的 groups 的数量排序，如果数量相同，根据 chunk 所在的索引排序。</li>
+</ul>
+<h3>小结</h3>
+<ol>
+<li>首先我们会发现除了 named 之外的规则都是生成的 number 值，并且只是在生成 chunkId 前，对 chunks 以不同的规则进行排序。</li>
+<li>通过 named 规则，我们可以发现，如果在 beforeChunkIds 中给 chunkId 赋值，那么就会阻截默认的规则。</li>
+</ol>
+<h2>chunkId 是怎么破坏线上缓存的？</h2>
+<p>说到破坏，我们心中可能又会有疑问，这东西怎么会<strong>破坏</strong>线上缓存呢？我们来模拟一个场景。</p>
+<p>想必业务思想很好的你，有时候也会让业务的快速变更搞的非常烦恼，假设一个 blog 项目三个功能模块：文章列表页、文章标签页、关于页，并且三个功能模块都是异步的。我们来简写一下代码。</p>
+<p>首先入口文件为 index.js，三个功能模块代码为 articleList.js、articleTag.js、about.js。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">//三个功能模块的代码如下：</span>
+<span class="token comment">//articleList.js</span>
+<span class="token keyword">const</span> <span class="token function-variable function">ArticleList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ArticleList'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> ArticleList
+<span class="token comment">//articleTag.js</span>
+<span class="token keyword">const</span> <span class="token function-variable function">ArticleTag</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ArticleTag'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> ArticleTag
+<span class="token comment">//about.js</span>
+<span class="token keyword">const</span> <span class="token function-variable function">About</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'About'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> About</code></pre></div>
+<p>在 index.js 中异步引入这三个功能模块。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 引入articleList</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./articleList'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入articleTag</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./articleTag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入about</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./about'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>我们使用生产环境打包一下，得到 dist 目录中的文件如下：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ca2cd58a6d91bae4fc91c64694c14e34/bd9d9/0.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.104294478527606%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAcyYBZ//xAAVEAEBAAAAAAAAAAAAAAAAAAAQQv/aAAgBAQABBQKT/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAERgf/aAAgBAQABPyGt7Kys/9oADAMBAAIAAwAAABB73//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/EGf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAn/8QAGRABAAIDAAAAAAAAAAAAAAAAAQBhESHB/9oACAEBAAE/EAAyu3JZLJ//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="0"
+        title="0"
+        src="/static/ca2cd58a6d91bae4fc91c64694c14e34/88218/0.jpg"
+        srcset="/static/ca2cd58a6d91bae4fc91c64694c14e34/7237a/0.jpg 148w,
+/static/ca2cd58a6d91bae4fc91c64694c14e34/0cfdf/0.jpg 295w,
+/static/ca2cd58a6d91bae4fc91c64694c14e34/88218/0.jpg 590w,
+/static/ca2cd58a6d91bae4fc91c64694c14e34/bd9d9/0.jpg 652w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>很完美，打包成功，结果也肯定和我们想的一样。</p>
+<p>假如有一天，需求变了，关于我们页不想要了，让它暂时不存在项目里面了(为了方便文件的 diff，我们先把当前的代码做一个备份)，我们可以先把 About 的代码在 index.js 中的代码注释。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 引入articleList</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./articleList'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入articleTag</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./articleTag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入about</span>
+<span class="token comment">//import('./about').then(_ => {</span>
+<span class="token comment">//  _.default()</span>
+<span class="token comment">//})</span></code></pre></div>
+<p>注释之后，重新打包。重新生成的文件和备份的如下</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/657895a76104e5dcb91117966ac68870/bd9d9/1.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 72.69938650306747%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAcydJgWf/8QAFRABAQAAAAAAAAAAAAAAAAAAEEL/2gAIAQEAAQUCkk//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAVEAEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAQAGPwJj/8QAFxABAQEBAAAAAAAAAAAAAAAAAREAEP/aAAgBAQABPyFqNXV07f/aAAwDAQACAAMAAAAQyx//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPxBn/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8QJ//EABsQAQABBQEAAAAAAAAAAAAAAAEAEBEhYbFR/9oACAEBAAE/EETfIPcTZNkU2D3tf//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="1"
+        title="1"
+        src="/static/657895a76104e5dcb91117966ac68870/88218/1.jpg"
+        srcset="/static/657895a76104e5dcb91117966ac68870/7237a/1.jpg 148w,
+/static/657895a76104e5dcb91117966ac68870/0cfdf/1.jpg 295w,
+/static/657895a76104e5dcb91117966ac68870/88218/1.jpg 590w,
+/static/657895a76104e5dcb91117966ac68870/bd9d9/1.jpg 652w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>打包结果如我们所想，一切都很平静，但是殊不知平静的背后正在掀起大浪。我们来使用一个比较工具文件内容比较工具---Beyond Compare，选取 dist 中和备份中的 1.js 文件来做一下比较。
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/165e02e1db0f49fbcc8b151a76fa5553/946ad/2.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.761904761904766%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdpyFDD/xAAWEAEBAQAAAAAAAAAAAAAAAAARACD/2gAIAQEAAQUCIz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAQABPyGCCIrL3P/aAAwDAQACAAMAAAAQlA//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPxCH/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGhAAAgMBAQAAAAAAAAAAAAAAAAEhQWERMf/aAAgBAQABPxBJowMib0TQ6Uf/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2"
+        title="2"
+        src="/static/165e02e1db0f49fbcc8b151a76fa5553/88218/2.jpg"
+        srcset="/static/165e02e1db0f49fbcc8b151a76fa5553/7237a/2.jpg 148w,
+/static/165e02e1db0f49fbcc8b151a76fa5553/0cfdf/2.jpg 295w,
+/static/165e02e1db0f49fbcc8b151a76fa5553/88218/2.jpg 590w,
+/static/165e02e1db0f49fbcc8b151a76fa5553/77d57/2.jpg 885w,
+/static/165e02e1db0f49fbcc8b151a76fa5553/5a917/2.jpg 1180w,
+/static/165e02e1db0f49fbcc8b151a76fa5553/946ad/2.jpg 2856w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+哇，你会发现，除了 webpack 的运行代码之外，其它的都不一样了，如果这样把代码抛到线上，这也就意味着在 About 的 chunkId 后异步 chunk 线上缓存都将失效。</p>
+<p>可以你会说，这不小意思吗？我有 webpack 的魔法注释，不让文件名变不就得了。(此时作者只能呵呵一笑)我们来验证一下。</p>
+<p>我们来把 index 中引入的三个模块都加上魔法注释：</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 引入articleList</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: "articleList" */</span> <span class="token string">'./articleList'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入articleTag</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: "articleTag" */</span> <span class="token string">'./articleTag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 引入about</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: "about" */</span> <span class="token string">'./about'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">_</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  _<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>打包结果如下</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/3cba6919c48a27eb766e74cc25ad4a06/c6066/3.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHNrCBZ/8QAFhAAAwAAAAAAAAAAAAAAAAAAARAy/9oACAEBAAEFAhK//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAGBABAAMBAAAAAAAAAAAAAAAAAQARIYH/2gAIAQEAAT8hV9Rdxls//9oADAMBAAIAAwAAABB73//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/EGf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAn/8QAGRABAAIDAAAAAAAAAAAAAAAAAQARMWGx/9oACAEBAAE/EGoVS3CVZBNjP//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="3"
+        title="3"
+        src="/static/3cba6919c48a27eb766e74cc25ad4a06/88218/3.jpg"
+        srcset="/static/3cba6919c48a27eb766e74cc25ad4a06/7237a/3.jpg 148w,
+/static/3cba6919c48a27eb766e74cc25ad4a06/0cfdf/3.jpg 295w,
+/static/3cba6919c48a27eb766e74cc25ad4a06/88218/3.jpg 590w,
+/static/3cba6919c48a27eb766e74cc25ad4a06/c6066/3.jpg 632w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+我们把当前 dist 备份，再把 about 注释，重新打包结果为</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0f85f578eb30e872f393ccb9cae839a2/c6066/4.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.70886075949367%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB5meuaQKvQgK//8QAFxAAAwEAAAAAAAAAAAAAAAAAARAxQv/aAAgBAQABBQLKEQi//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAHBAAAQQDAQAAAAAAAAAAAAAAEQABITEQIFFx/9oACAEBAAE/IWoep7jAD6nBtRof/9oADAMBAAIAAwAAABBc0MH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAhP//EAB0QAQABBAMBAAAAAAAAAAAAAAERABAxcSGBkcH/2gAIAQEAAT8QMgJ5ecVCWBYSlciY1RChPVbPlYNvy/8A/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="4"
+        title="4"
+        src="/static/0f85f578eb30e872f393ccb9cae839a2/88218/4.jpg"
+        srcset="/static/0f85f578eb30e872f393ccb9cae839a2/7237a/4.jpg 148w,
+/static/0f85f578eb30e872f393ccb9cae839a2/0cfdf/4.jpg 295w,
+/static/0f85f578eb30e872f393ccb9cae839a2/88218/4.jpg 590w,
+/static/0f85f578eb30e872f393ccb9cae839a2/c6066/4.jpg 632w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+我们来选择 articleList 来比较一下，打开 Beyond Compare，选择 dist 和备份中的 articleList 文件。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/cac8b5e798a17120fb54087d31db4425/946ad/5.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.761904761904766%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdpyFDD/xAAWEAEBAQAAAAAAAAAAAAAAAAARACD/2gAIAQEAAQUCIz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAXEAEBAQEAAAAAAAAAAAAAAAARAAEQ/9oACAEBAAE/IRCMnZ15/9oADAMBAAIAAwAAABCUD//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/EIf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAABBQEAAAAAAAAAAAAAAAAAARExQWFR/9oACAEBAAE/EE4mBkK9JEco/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="5"
+        title="5"
+        src="/static/cac8b5e798a17120fb54087d31db4425/88218/5.jpg"
+        srcset="/static/cac8b5e798a17120fb54087d31db4425/7237a/5.jpg 148w,
+/static/cac8b5e798a17120fb54087d31db4425/0cfdf/5.jpg 295w,
+/static/cac8b5e798a17120fb54087d31db4425/88218/5.jpg 590w,
+/static/cac8b5e798a17120fb54087d31db4425/77d57/5.jpg 885w,
+/static/cac8b5e798a17120fb54087d31db4425/5a917/5.jpg 1180w,
+/static/cac8b5e798a17120fb54087d31db4425/946ad/5.jpg 2856w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+呵呵，主要内容确实没有变化，但是我们的 chunkId 变了，那么文件内容也变了，缓存失效。</p>
+<h3>小结</h3>
+<ol>
+<li>按需加载可以使单个 js 文件的代码量更小、加载更快，但是带来优化的同时也对缓存产生了极大的伤害。</li>
+<li>缓存是性能优化中极为重要的部分，罪魁祸首在 chunkId，所以必须盘它。</li>
+</ol>
+<h2>解决 chunkId 对破坏缓存的方法</h2>
+<p>相信上述问题，早已被社区的同学们发现，笔者在也曾找了一会插件，但都没有如愿，心里不服，干脆自己写一个。</p>
+<p><a href="https://www.npmjs.com/package/webpack-fixed-chunk-id-plugin">webpack-fixed-chunk-id-plugin</a> 这个插件已经被笔者发布到 npm，代码极简，可能会存在不足，还望社区大佬多多提建议，共同成长。</p>
+<h3>说说我的想法</h3>
+<p>根据上文我们可以得出，万物的罪魁祸首是 chunkId，所以必须要固定它，才能让文件内容不会变。那如何固定呢？</p>
+<p><strong>第一点</strong>：根据上文第一部分分析 chunkId 生成原理的时候，我们从 named 这个规则中得出只要在<code class="language-text">beforeChunkIds</code>，这个地方给 chunkId 一个值，在<code class="language-text">applyChunKId</code>阶段就不会对 chunkId 执行定义的规则。</p>
+<p><strong>第二点</strong>：上一点得出在 webpack 什么阶段来控制 chunkId，那么这点就应该讨论控制 chunkId 要基于什么来控制？ 第一个想到的肯定是内容，基于内容来控制 chunkId，当内容变 chunkId 变、内容不变 chunkId 不变。</p>
+<p>基于上面两点，插件代码如下：</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> crypto <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'crypto'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> pluginName <span class="token operator">=</span> <span class="token string">'WebpackFixedChunkIdPlugin'</span>
+
+<span class="token keyword">class</span> <span class="token class-name">WebpackFixedChunkIdPlugin</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> hashLength <span class="token operator">=</span> <span class="token number">8</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//todo</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>hashStart <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>hashLength <span class="token operator">=</span> hashLength
+  <span class="token punctuation">}</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    compiler<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>compilation<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span>pluginName<span class="token punctuation">,</span> <span class="token parameter">compilation</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      compilation<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>beforeChunkIds<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span>pluginName<span class="token punctuation">,</span> <span class="token parameter">chunks</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        chunks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">chunk<span class="token punctuation">,</span> idx</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">let</span> modulesVal<span class="token punctuation">,</span> chunkId
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span><span class="token operator">...</span>chunk<span class="token punctuation">.</span>_modules<span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            modulesVal <span class="token operator">=</span> chunk<span class="token punctuation">.</span>name
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> modules <span class="token operator">=</span> chunk<span class="token punctuation">.</span>_modules
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> module <span class="token keyword">of</span> modules<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              modulesVal <span class="token operator">+=</span> module<span class="token punctuation">.</span>_source<span class="token punctuation">.</span>_value
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">const</span> chunkIdHash <span class="token operator">=</span> crypto
+            <span class="token punctuation">.</span><span class="token function">createHash</span><span class="token punctuation">(</span><span class="token string">'md5'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>modulesVal<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">digest</span><span class="token punctuation">(</span><span class="token string">'hex'</span><span class="token punctuation">)</span>
+          chunkId <span class="token operator">=</span> chunkIdHash<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>hashStart<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>hashLength<span class="token punctuation">)</span>
+          chunk<span class="token punctuation">.</span>id <span class="token operator">=</span> chunkId
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> WebpackFixedChunkIdPlugin</code></pre></div>
+<p>通过挂载到 beforeChunkIds 钩子上，拿到所有的 chunk，遍历每一个 chunk 得到所有合并当前 chunk 的 module 的内容，使用 node 的 crypto 加密模块，对内容计算 hash 值，设置<code class="language-text">chunk.id</code>。下面我们来测试一下，这个插件好不好用。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">//下载插件：npm install webpack-fixed-chunk-id-plugin</span>
+<span class="token keyword">const</span> WebpackFixedChunkIdPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack-fixed-chunk-id-plugin'</span><span class="token punctuation">)</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">WebpackFixedChunkIdPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>打包一下查看结果：
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6c5e42351fbb9018670698ad2a4bdd76/33e0f/6.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.064449064449065%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGQAAAQUAAAAAAAAAAAAAAAAAAAECAwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAHKZKOK4g3/xAAZEAABBQAAAAAAAAAAAAAAAAAAAQIQETH/2gAIAQEAAQUCKSXYf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAQADAQEAAAAAAAAAAAAAAAEAITEQEf/aAAgBAQABPyG/LYk7Udhnb//aAAwDAQACAAMAAAAQyP8A/8QAFREBAQAAAAAAAAAAAAAAAAAAEEH/2gAIAQMBAT8Qh//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/EKf/xAAbEAEBAAIDAQAAAAAAAAAAAAABEQAhEDFBwf/aAAgBAQABPxBXsGl1TLSjEVOvM++NJGcf/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="6"
+        title="6"
+        src="/static/6c5e42351fbb9018670698ad2a4bdd76/88218/6.jpg"
+        srcset="/static/6c5e42351fbb9018670698ad2a4bdd76/7237a/6.jpg 148w,
+/static/6c5e42351fbb9018670698ad2a4bdd76/0cfdf/6.jpg 295w,
+/static/6c5e42351fbb9018670698ad2a4bdd76/88218/6.jpg 590w,
+/static/6c5e42351fbb9018670698ad2a4bdd76/77d57/6.jpg 885w,
+/static/6c5e42351fbb9018670698ad2a4bdd76/33e0f/6.jpg 962w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+在打包日志的我们发现，Chunks 那里变成了一串 hash 值，这就是根据 module 内容计算出的 hash 值。我们再把 about 功能模块注释，打包一下，并查看结果。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/40ddbde415af1d5438b2892e93d452c5/946ad/7.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.221288515406165%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe1c0oP/xAAWEAEBAQAAAAAAAAAAAAAAAAARACD/2gAIAQEAAQUCIz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAXEAEBAQEAAAAAAAAAAAAAAAARAAEQ/9oACAEBAAE/IRCMnZ5//9oADAMBAAIAAwAAABCgD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAAICAwAAAAAAAAAAAAAAAAABEWExQVH/2gAIAQEAAT8QSdFBULsSnJLP/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="7"
+        title="7"
+        src="/static/40ddbde415af1d5438b2892e93d452c5/88218/7.jpg"
+        srcset="/static/40ddbde415af1d5438b2892e93d452c5/7237a/7.jpg 148w,
+/static/40ddbde415af1d5438b2892e93d452c5/0cfdf/7.jpg 295w,
+/static/40ddbde415af1d5438b2892e93d452c5/88218/7.jpg 590w,
+/static/40ddbde415af1d5438b2892e93d452c5/77d57/7.jpg 885w,
+/static/40ddbde415af1d5438b2892e93d452c5/5a917/7.jpg 1180w,
+/static/40ddbde415af1d5438b2892e93d452c5/946ad/7.jpg 2856w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+没有报红，减少一个模块并不会影响其他模块，完美。</p>
+<h3>小结</h3>
+<ol>
+<li>根据打包问题，确定事故发生地点---chunkId。</li>
+<li>根据事故发生时机，找出阻截事故发生方案---beforeChunkIds。</li>
+<li>定制可行方案---基于 module 内容来生成唯一 hash。</li>
+</ol>
+<h2>远观未来，webpack5 完美解决</h2>
+<p>chunkId 事故问题可谓 webpack 自身留下的坑，chunkId 方便了开发者，同样 chunkId 也对我们造成了极大的破坏，正所谓：成也 chunkId、败也 chunkId。</p>
+<p><strong>webpack4 中遗留的问题，在还未现世的 webpack5 中得到了完美的解决。</strong></p>
+<p>接下来开始尝鲜 webpack5。由于 webpack5 还未发版，我们可以通过一些方法来使用它。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">//下载webpack5</span>
+npm init <span class="token operator">-</span>y
+npm install webpack@next <span class="token operator">--</span>save<span class="token operator">-</span>dev
+npm install webpack<span class="token operator">-</span>cli <span class="token operator">--</span>save<span class="token operator">-</span>dev</code></pre></div>
+<p>把 webpack4 中的 src 下的代码拷贝到 webpack5 中打包，结果如下：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c765491c3d5eb208a808ea0d6162b370/b6b64/8.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.41121495327103%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwABBf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAAB5Zqbg7Jv/8QAGBAAAgMAAAAAAAAAAAAAAAAAABEBEEH/2gAIAQEAAQUCESY6/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGhABAAMAAwAAAAAAAAAAAAAAAQARIRAxUf/aAAgBAQABPyG3NiFu5QcnqNjo4//aAAwDAQACAAMAAAAQW/8A/8QAFREBAQAAAAAAAAAAAAAAAAAAEEH/2gAIAQMBAT8Qh//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQADAQEBAAAAAAAAAAAAAAEAESFBEFH/2gAIAQEAAT8QFosy8UgzEaUzsFBWfYO+tY1D4f/Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="8"
+        title="8"
+        src="/static/c765491c3d5eb208a808ea0d6162b370/88218/8.jpg"
+        srcset="/static/c765491c3d5eb208a808ea0d6162b370/7237a/8.jpg 148w,
+/static/c765491c3d5eb208a808ea0d6162b370/0cfdf/8.jpg 295w,
+/static/c765491c3d5eb208a808ea0d6162b370/88218/8.jpg 590w,
+/static/c765491c3d5eb208a808ea0d6162b370/b6b64/8.jpg 856w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+由上图结果可见，Chunks 栏都变成了一个确定的数字值，并且<code class="language-text">可能</code>(接下来论证)是不受其他 chunk 影响的。</p>
+<p>我们来按照之前的方式验证一下，把 about 模块注释，并使用 Beyond Compare 比较一下。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;"
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/560f32b80daae6f5a9b15ece4eea3433/946ad/9.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.221288515406165%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe1c0oP/xAAWEAEBAQAAAAAAAAAAAAAAAAARACD/2gAIAQEAAQUCIz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAXEAEBAQEAAAAAAAAAAAAAAAARAAEQ/9oACAEBAAE/IRCMnZ5//9oADAMBAAIAAwAAABCgD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAAIDAQEAAAAAAAAAAAAAAAABESFhQVH/2gAIAQEAAT8QSeGBkL2JXZLP/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="9"
+        title="9"
+        src="/static/560f32b80daae6f5a9b15ece4eea3433/88218/9.jpg"
+        srcset="/static/560f32b80daae6f5a9b15ece4eea3433/7237a/9.jpg 148w,
+/static/560f32b80daae6f5a9b15ece4eea3433/0cfdf/9.jpg 295w,
+/static/560f32b80daae6f5a9b15ece4eea3433/88218/9.jpg 590w,
+/static/560f32b80daae6f5a9b15ece4eea3433/77d57/9.jpg 885w,
+/static/560f32b80daae6f5a9b15ece4eea3433/5a917/9.jpg 1180w,
+/static/560f32b80daae6f5a9b15ece4eea3433/946ad/9.jpg 2856w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+没有影响，webpack5 完美的解决了这个问题。</p>
+<p>虽然 webpack5 可以执行以上操作，但是由于目前还未发布，以 cli 的配合并不完善。目前的版本，只要写 webpack.config.js 使用 cli 启动就会报错，如果要使用配置文件的话就只能使用 node 来启动 webpack。</p>
+<p>并且如果要使用 webpack5 完美的 chunkId，还需要在 webpack 配置文件中配置一下内容：</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    chunkIds<span class="token punctuation">:</span> <span class="token string">'deterministic'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>小结</h3>
+<p>目前的 webpack5 已经有了很多优秀的特性，包括代码也变的更加简介，总之，拥抱 webpack5 吧。</p>
+<h2>总结</h2>
+<p>我们在开发过程中关注甚少的 chunkId 竟能引发这个大的问题，所以个人认为不仅是在学习还是在深入研究的过程中都要抱有疑问或是怀疑态度，促使我们去挖掘原理，只有明白真正内部实现的时候，才能完全的相信它，这也是我的一种自我提升的方式。</p></div><hr style="margin-bottom:1.75rem"/><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEIUlEQVQ4y1VUe0xTZxT/SmH4x4zTxWVZ5sKMA8obLg9JZJsQTXQGhEVwD7aYJUbHkm065CFDXioLyWZgGTBkAg5pKRXKqyI1YAcUCmy9fQAt0BeWlmqQ9Q299377LiUMTk7OPfd893d+595zzgVwt5AkiaxCLv8s+8vs9I9OJES9987bUSGs9PQMgUCAjiiK2n4YeC+UVzaRLS33D+x77fW9r2KsI2tPml8Im47HR4NNSU1NXTaZaY7NFGCTjU7nTbn2fCUxIvRq9lnTk5aIwCPD9WW67trgwwHN5VdKv/4C4TMzztpsNi8fQMB5hVQzq/x37SUKGXCxmldtH+V4JtqXBpqsw3+SYtpxT3RYR9g9NSXdVbnXCwppSoIAUyKhtOuu+EHNM808Csmf9lse3a0vvBwScOhC2gmLsGlF2Jx5Mikm6N2h3ysoKV/TWxcbFjyrXqDLHuTdtzyqWxc/0KhnDfgYIXk4VFsKgM/jx4OJ7x9vv/39rcvnMz/NLimvOHRw//oYB05y0z882lx7hyIJoFLInvJaTMPshd4G21ATlPNFDeWv+O85k5b+xptvSZoqyy99EhDIiojGsODD5DhnfbRthlfjGWmZFfUDwuOhezMiXO6thdMPiTE2/Jsnarh5NetU/50CiHc5RtsaCy/dvJil7amDEi412kZJuHCKZxy4B7wf2WjQmQQNUNJOjXMoMQfifDgngLJuSsxGESjrgYo+OijrtE1yV8VsOME2DzRu9dnudOpFXDjNpUbaUG7ir1aPqJUQtUJUyGQHOc11TrWbOb8qvvt26pu8yZz8mUG+Sauiwd7ZwHmdhj9+Iuf7KCWfUnYT8i5SybdLOObOWl15kSb5nHlfog2EQ0akFYTph8RbQ0IRBLKaex0KvzB1SoampEB3u1iVn6vOvKANObm8N8EKwgkQQTJiCN84956jTsDS5VWR2+OJ5gXdrAyOzERmaABrlRGK0m+AcA/CgJgNZty6b5yTidl8MIqBQcDSHky0LJvA9pR7+Wf6hC9RbX4JG740AKnbJ9bNwDYYmJ2JSf0jlw4kzh5Lm6qstlutO8CbPVMV/ewCgW6/eDeTxrh9MOSsMzCkLv/4BRCKn8my4ByDWv7/Vnm30Q3hfFqOBwSRzFgKRBEghgRRJO1gyPcwoyEIXkz+XClofDajhDvfGakDQuWpizYQZAxO0h9LsfjEGIKSFj9IeQGil/fHaz8+PXc6WXw9V9lT/9xs3s2MlhRC6dhvS5KvrPYiK1FsVF1Bjp0q0Y7mrGh+cMAyJ7whmy6VCftdbueunwG9zGsuo/EXCIso6gZF/QhhsdOZ73blIQdCFEG2cEFTtrpm39rnnWCbzYXjVXr9NcNi3qIqX6evwPFb4+MVOl2lXFqgll1TzxVI/6l2OBxe0H/m20IbhGyKmwAAAABJRU5ErkJggg==" alt="Kim" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/5eab5dad86f8b7169ddec9e0af2218a5/000d3/title.png 1x,
+/static/5eab5dad86f8b7169ddec9e0af2218a5/bc2a0/title.png 1.5x,
+/static/5eab5dad86f8b7169ddec9e0af2218a5/89cf4/title.png 2x" /><img loading="lazy" width="50" height="50" srcset="/static/5eab5dad86f8b7169ddec9e0af2218a5/000d3/title.png 1x,
+/static/5eab5dad86f8b7169ddec9e0af2218a5/bc2a0/title.png 1.5x,
+/static/5eab5dad86f8b7169ddec9e0af2218a5/89cf4/title.png 2x" src="/static/5eab5dad86f8b7169ddec9e0af2218a5/000d3/title.png" alt="Kim" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>嗨！我是<strong>Kim</strong>，是一位大前端爱好者。如果您感兴趣，可以访问我的<!-- --> <a href="https://github.com/hubvue">GitHub</a></p></div><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/content/TypeScript/typescript-options/">← <!-- -->TypeScript的配置信息</a></li><li><a rel="next" href="/content/React/reactdom-render/">深入探究ReactDom.render方法执行过程<!-- --> →</a></li></ul></main><footer>© <!-- -->2019<!-- -->, Kim<!-- --> </footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/content/Webpack/webpack-chunk-id-cache/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-72547bc230da748b1080.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-87ef582ba388a83f73c0.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-1449881ee96972f875f7.js"],"component---src-pages-404-jsx":["/component---src-pages-404-jsx-52db113e98d40eab9e59.js"],"component---src-pages-index-jsx":["/component---src-pages-index-jsx-28c1955edf77d0cb17d3.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-js-1449881ee96972f875f7.js" async=""></script><script src="/commons-261e339cd776e27ea27f.js" async=""></script><script src="/styles-adcbea1dfe5f9bdb9878.js" async=""></script><script src="/app-72547bc230da748b1080.js" async=""></script><script src="/webpack-runtime-de23e6db0a11f0440c98.js" async=""></script></body></html>

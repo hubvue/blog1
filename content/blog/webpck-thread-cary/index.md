@@ -2,6 +2,7 @@
 title: 深入理解webpack痛点及解决方案
 date: '2019-10-15'
 description: 深入理解webpack的loader及单线程的问题，抛出解决方案
+category: Webpack
 ---
 
 ## webpack 的痛点

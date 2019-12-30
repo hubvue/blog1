@@ -2,6 +2,7 @@
 title: Benchmark写性能测试
 date: '2019-10-13'
 description: 使用Benchmark初次做性能测试
+category: Test
 ---
 
 ### 前言

@@ -1,7 +1,6 @@
-import "core-js/modules/es7.promise.finally"
 import prefetchHelper from "./prefetch"
 import emitter from "./emitter"
-import PathFinder from "./find-path"
+import { setMatchPaths, findPath, findMatchPath } from "./find-path"
 
 const preferDefault = m => (m && m.default) || m
 
@@ -20,7 +19,6 @@ const doFetch = (url, method = `GET`) =>
   new Promise((resolve, reject) => {
     const req = new XMLHttpRequest()
     req.open(method, url, true)
-    req.withCredentials = true
     req.onreadystatechange = () => {
       if (req.readyState == 4) {
         resolve(req)
@@ -39,7 +37,7 @@ const loadPageDataJson = loadObj => {
     if (status === 200) {
       try {
         const jsonPayload = JSON.parse(responseText)
-        if (jsonPayload.webpackCompilationHash === undefined) {
+        if (jsonPayload.path === undefined) {
           throw new Error(`not a valid pageData response`)
         }
 
@@ -88,7 +86,10 @@ const loadPageDataJson = loadObj => {
 }
 
 const doesConnectionSupportPrefetch = () => {
-  if (`connection` in navigator) {
+  if (
+    `connection` in navigator &&
+    typeof navigator.connection !== `undefined`
+  ) {
     if ((navigator.connection.effectiveType || ``).includes(`2g`)) {
       return false
     }
@@ -135,7 +136,7 @@ export class BaseLoader {
     this.prefetchTriggered = new Set()
     this.prefetchCompleted = new Set()
     this.loadComponent = loadComponent
-    this.pathFinder = new PathFinder(matchPaths)
+    setMatchPaths(matchPaths)
   }
 
   setApiRunner(apiRunner) {
@@ -144,7 +145,7 @@ export class BaseLoader {
   }
 
   loadPageDataJson(rawPath) {
-    const pagePath = this.pathFinder.find(rawPath)
+    const pagePath = findPath(rawPath)
     if (this.pageDataDb.has(pagePath)) {
       return Promise.resolve(this.pageDataDb.get(pagePath))
     }
@@ -156,9 +157,13 @@ export class BaseLoader {
     })
   }
 
+  findMatchPath(rawPath) {
+    return findMatchPath(rawPath)
+  }
+
   // TODO check all uses of this and whether they use undefined for page resources not exist
   loadPage(rawPath) {
-    const pagePath = this.pathFinder.find(rawPath)
+    const pagePath = findPath(rawPath)
     if (this.pageDb.has(pagePath)) {
       const page = this.pageDb.get(pagePath)
       return Promise.resolve(page.payload)
@@ -167,8 +172,12 @@ export class BaseLoader {
       return this.inFlightDb.get(pagePath)
     }
 
-    const inFlight = this.loadPageDataJson(pagePath)
-      .then(result => {
+    const inFlight = Promise.all([
+      this.loadAppData(),
+      this.loadPageDataJson(pagePath),
+    ])
+      .then(allData => {
+        const result = allData[1]
         if (result.status === `error`) {
           return {
             status: `error`,
@@ -181,7 +190,7 @@ export class BaseLoader {
           )
         }
 
-        const pageData = result.payload
+        let pageData = result.payload
         const { componentChunkName } = pageData
         return this.loadComponent(componentChunkName).then(component => {
           const finalResult = { createdAt: new Date() }
@@ -193,6 +202,11 @@ export class BaseLoader {
             if (result.notFound === true) {
               finalResult.notFound = true
             }
+            pageData = Object.assign(pageData, {
+              webpackCompilationHash: allData[0]
+                ? allData[0].webpackCompilationHash
+                : ``,
+            })
             pageResources = toPageResources(pageData, component)
             finalResult.payload = pageResources
             emitter.emit(`onPostLoadPageResources`, {
@@ -205,8 +219,14 @@ export class BaseLoader {
           return pageResources
         })
       })
-      .finally(() => {
+      // prefer duplication with then + catch over .finally to prevent problems in ie11 + firefox
+      .then(response => {
         this.inFlightDb.delete(pagePath)
+        return response
+      })
+      .catch(err => {
+        this.inFlightDb.delete(pagePath)
+        throw err
       })
 
     this.inFlightDb.set(pagePath, inFlight)
@@ -215,7 +235,7 @@ export class BaseLoader {
 
   // returns undefined if loading page ran into errors
   loadPageSync(rawPath) {
-    const pagePath = this.pathFinder.find(rawPath)
+    const pagePath = findPath(rawPath)
     if (this.pageDb.has(pagePath)) {
       return this.pageDb.get(pagePath).payload
     }
@@ -223,11 +243,6 @@ export class BaseLoader {
   }
 
   shouldPrefetch(pagePath) {
-    // If a plugin has disabled core prefetching, stop now.
-    if (this.prefetchDisabled) {
-      return false
-    }
-
     // Skip prefetching if we know user is on slow or constrained connection
     if (!doesConnectionSupportPrefetch()) {
       return false
@@ -245,6 +260,7 @@ export class BaseLoader {
     if (!this.shouldPrefetch(pagePath)) {
       return false
     }
+
     // Tell plugins with custom prefetching logic that they should start
     // prefetching this path.
     if (!this.prefetchTriggered.has(pagePath)) {
@@ -252,13 +268,18 @@ export class BaseLoader {
       this.prefetchTriggered.add(pagePath)
     }
 
-    this.doPrefetch(pagePath).then(pageData => {
-      const realPath = this.pathFinder.find(pagePath)
-      if (!this.prefetchCompleted.has(realPath)) {
-        this.apiRunner(`onPostPrefetchPathname`, { pathname: pagePath })
+    // If a plugin has disabled core prefetching, stop now.
+    if (this.prefetchDisabled) {
+      return false
+    }
 
-        const realPath = this.pathFinder.find(pagePath)
-        this.prefetchCompleted.add(realPath)
+    const realPath = findPath(pagePath)
+    // Todo make doPrefetch logic cacheable
+    // eslint-disable-next-line consistent-return
+    this.doPrefetch(realPath).then(() => {
+      if (!this.prefetchCompleted.has(pagePath)) {
+        this.apiRunner(`onPostPrefetchPathname`, { pathname: pagePath })
+        this.prefetchCompleted.add(pagePath)
       }
     })
 
@@ -274,7 +295,7 @@ export class BaseLoader {
   }
 
   getResourceURLsForPathname(rawPath) {
-    const pagePath = this.pathFinder.find(rawPath)
+    const pagePath = findPath(rawPath)
     const page = this.pageDataDb.get(pagePath)
     if (page) {
       const pageResources = toPageResources(page.payload)
@@ -289,9 +310,38 @@ export class BaseLoader {
   }
 
   isPageNotFound(rawPath) {
-    const pagePath = this.pathFinder.find(rawPath)
+    const pagePath = findPath(rawPath)
     const page = this.pageDb.get(pagePath)
     return page && page.notFound === true
+  }
+
+  loadAppData(retries = 0) {
+    return doFetch(`${__PATH_PREFIX__}/page-data/app-data.json`).then(req => {
+      const { status, responseText } = req
+
+      let appData
+
+      if (status !== 200 && retries < 3) {
+        // Retry 3 times incase of failures
+        return this.loadAppData(retries + 1)
+      }
+
+      // Handle 200
+      if (status === 200) {
+        try {
+          const jsonPayload = JSON.parse(responseText)
+          if (jsonPayload.webpackCompilationHash === undefined) {
+            throw new Error(`not a valid app-data response`)
+          }
+
+          appData = jsonPayload
+        } catch (err) {
+          // continue regardless of error
+        }
+      }
+
+      return appData
+    })
   }
 }
 
@@ -310,7 +360,10 @@ export class ProdLoader extends BaseLoader {
 
   doPrefetch(pagePath) {
     const pageDataUrl = createPageDataUrl(pagePath)
-    return prefetchHelper(pageDataUrl)
+    return prefetchHelper(pageDataUrl, {
+      crossOrigin: `anonymous`,
+      as: `fetch`,
+    })
       .then(() =>
         // This was just prefetched, so will return a response from
         // the cache instead of making another request to the server
@@ -362,6 +415,7 @@ export const publicLoader = {
   prefetch: rawPath => instance.prefetch(rawPath),
   isPageNotFound: rawPath => instance.isPageNotFound(rawPath),
   hovering: rawPath => instance.hovering(rawPath),
+  loadAppData: () => instance.loadAppData(),
 }
 
 export default publicLoader

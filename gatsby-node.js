@@ -43,8 +43,8 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: post.node.fields.slug,
           previous,
-          next,
-        },
+          next
+        }
       })
     })
 
@@ -56,11 +56,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    // 获取文章的类别,按照类别分文件夹
+    const category = node.frontmatter.category || 'null'
+    let value = createFilePath({ node, getNode })
+    value = `/content/${category}${value}`
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
+    })
+  }
+}
+
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+  if (getConfig().mode === 'production') {
+    // 生产环境下的配置
+    actions.setWebpackConfig({
+      devtool: false
     })
   }
 }

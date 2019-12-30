@@ -1,23 +1,20 @@
 var plugins = [{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-remark-images/gatsby-ssr'),
-      options: {"plugins":[],"maxWidth":590},
-    },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-feed/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-feed/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
       options: {"plugins":[],"name":" Blog","short_name":"GatsbyJS","start_url":"/","background_color":"#ffffff","theme_color":"#663399","display":"minimal-ui","icon":"content/assets/favicon.ico"},
     },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-offline/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-offline/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/home/chong/gatsby-blog/node_modules/gatsby-plugin-typography/gatsby-ssr'),
+      plugin: require('/Users/didi/Desktop/code/gatsby-blog/node_modules/gatsby-plugin-typography/gatsby-ssr'),
       options: {"plugins":[],"pathToConfigModule":"src/utils/typography"},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

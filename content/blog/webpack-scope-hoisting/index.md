@@ -2,6 +2,7 @@
 title: Webpack模块化的问题及Scope hoisting原理
 date: '2019-10-11'
 description: 分析webpack产出文件js模块化的问题，探究Scope hoisting怎么解决
+category: Webpack
 ---
 
 ## webpack 产出物存在的问题

@@ -2,6 +2,7 @@
 title: 深入探究ReactDom.render方法执行过程
 date: '2019-09-14'
 description: 深入源码，探究React.render方法的执行过程。
+category: React
 ---
 
 ### 前言

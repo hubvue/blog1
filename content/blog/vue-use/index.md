@@ -2,6 +2,7 @@
 title: Vue插件机制解析
 date: '2019-10-20'
 description: 深入源码解析Vue的插件机制
+category: Vue
 ---
 
 ### 前言

@@ -2,6 +2,7 @@
 title: 从V8对类型的优化上谈为什么要使用TypeScript
 date: '2019-09-14'
 description: 从V8内部对JavaScript代码的解析过程中来探讨一下为什么要使用TypeScript
+category: TypeScript
 ---
 
 TypeScript 据目前来看基本上是前端开发者的标配，我们可能仅仅知道 TypeScirpt 解决了 JavaScript 在类型上的苦恼，但是对于带给我们更多的底层优化可能熟知甚少，接下来我们就从 V8 内部对类型的优化上来探讨一下为什么要使用 TypeScript 吧。
