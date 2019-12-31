@@ -110,7 +110,7 @@ function animalSay(animal: Animal) {
 }
 ```
 
-### step3：typeof 运算符
+#### step3：typeof 运算符
 
 typeof 最基本的作用是监测一个值的类型是什么（虽然监测的也不准）。
 typeof 运算符并不能用于上面例子，因为都是 Object 类型，它只能作用于它能监测出来的类型上。
