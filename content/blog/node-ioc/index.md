@@ -2,7 +2,7 @@
 title: IOC在Nodejs上的初体验
 date: '2019-10-03'
 description: 模块间解耦，IOC在Node上的实战
-category: design-pattern
+category: DesignPattern
 ---
 
 ## 前言

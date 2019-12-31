@@ -12,14 +12,16 @@ const Layout = ({ location, title, children }) => {
         style={{
           ...scale(1),
           marginBottom: rhythm(1.5),
-          marginTop: 0
+          marginTop: 0,
+          fontSize: `30px`
         }}
       >
         <Link
           style={{
             boxShadow: `none`,
             textDecoration: `none`,
-            color: `inherit`
+            color: `inherit`,
+            fontSize: `30px`
           }}
           to={`/`}
         >
