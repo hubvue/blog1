@@ -60,7 +60,7 @@ const Layout = ({ location, title, children }) => {
       }}
     >
       <header>{header}</header>
-      <main>{children}</main>
+      {children}
       <footer>
         © {new Date().getFullYear()}, Kim
         {` `}
