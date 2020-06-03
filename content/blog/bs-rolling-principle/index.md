@@ -1,5 +1,5 @@
 ---
-title: better-scroll滚动原理分析
+title: better-scrollv1滚动原理分析
 date: '2020-06-03'
 description: 本篇文章用于分析当今最流行的滚动库better-scroll的滚动原理
 category: better-scroll
