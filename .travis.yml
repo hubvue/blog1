@@ -2,4 +2,3 @@ language: node.js
 node:
   - 8
   - 10
-  - 12
