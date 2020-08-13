@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import ArticleList from '../components/ArticleList'
 import CategoryList from '../components/CategoryList'
+import '../../static/css/reset.css'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
