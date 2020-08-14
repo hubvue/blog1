@@ -194,4 +194,54 @@ type NonFunctionKeysResult = NonFunctionKeys<MixedProps> //"name" | "someKeys" |
 
 #### IfEquals
 
-<!-- 这是一个辅助类型函数，用于判断两个类型是否相同。 -->
+IfEquals 一个辅助类型函数，用于判断两个类型是否相同。
+
+**实现**
+
+```ts
+type IfEquals<X, Y, A = X, B = never> = (<T>() => T extends X ? 1 : 2) extends <
+  T
+>() => T extends Y ? 1 : 2
+  ? A
+  : B
+```
+
+如果你了解一些 TS 的话可能会想到，判断两个类型是否相同不是直接使用双向 extends 就可以了吗，这个是什么玩意？🤔️
+
+我想你说的双向 extends 方式是这样的。
+
+```ts
+type Same<X, Y> = X extends Y ? (Y extends X ? true : false) : false
+```
+
+对于上面 Same 类型函数这种写法，其实是有缺陷的，它没有办法推断两个类型是否绝对相同，比如说相同结构但带有不同属性修饰符的对象类型。
+
+```ts
+type X = {
+  name: string
+  age: number
+}
+type Y = {
+  readonly name: string
+  age: number
+}
+```
+
+上面这两个类型 Same 类型函数就无法推断，这种情况下就必须要使用`IfEquals`类型函数了。
+
+**示例**
+
+```ts
+type SameResult = Same<X, Y> //true
+type IfEqualsResult = IfEquals<X, Y> //never
+```
+
+`IfEquals`类型函数的核心就是使用了延时条件类型，在兼容性推断的时候依赖了内部类型的一致性检查。`IfEquals`内部最少依赖了两个泛型参数，`X`、`Y`，在传入`X`、`Y`泛型参数后，对类型进行推断，如果能推断出结果就返回最终的类型，否则就延时推断过程，等待确认的类型参数传进来后再进行类型推断。
+
+像`IfEquals`类型函数一样，构造一个延时条件类型很简单，只需要构建一个函数类型并且将函数的返回值构建成依赖泛型参数的条件类型就可以了。
+
+```ts
+type DeferConditionalType = <T>(value: T) => T extends string ? number : boolean
+```
+
+在使用`DeferConditionalType`泛型的时候就会根据传入的泛型参数延时推断出返回值类型。
