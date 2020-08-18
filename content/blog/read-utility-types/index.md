@@ -194,7 +194,7 @@ type NonFunctionKeysResult = NonFunctionKeys<MixedProps> //"name" | "someKeys" |
 
 #### IfEquals
 
-IfEquals 一个辅助类型函数，用于判断两个类型是否相同。
+IfEquals 是一个辅助类型函数，用于判断两个类型是否相同。
 
 **实现**
 
@@ -245,3 +245,100 @@ type DeferConditionalType = <T>(value: T) => T extends string ? number : boolean
 ```
 
 在使用`DeferConditionalType`泛型的时候就会根据传入的泛型参数延时推断出返回值类型。
+
+#### WriteableKeys
+
+WriteableKeys 用于获取对象类型中所有可写的 key。
+
+**实现**
+
+```ts
+export type WriteableKeys<T extends object> = {
+  [P in keyof T]-?: IfEquals<
+    { [Q in P]: T[P] },
+    { -readonly [Q in P]: T[P] },
+    P
+  >
+}[keyof T]
+```
+
+**示例**
+
+```ts
+type Props = { readonly foo: string; bar: number }
+
+type WriteableKeysResult = WriteableKeys<Props> // "bar"
+```
+
+从源码中可以看出使用了 IfEquals 函数，现在我们已经知道 IfEquals 函数用于判断两个类型是否严格相等(不清楚的可以看下 IfEquals 函数的解析)，所以就比较好办了。
+
+在遍历对象 key 的过程中，构造两个对象，分别是原 key 构造的对象和去掉 readonly 修饰 key 构造的对象，并且第三个参数传入 key，作为匹配相同的类型函数返回值，因此最终结果就是带有 readonly 修饰的 key 的值类型都是 never，其余的 key 的值类型是 key 本身，最后再通过索引类型访问操作符获取到所有 key 的值类型的联合类型。
+
+#### ReadonlyKeys
+
+ReadonlyKeys 用于获取对象类型中所有被 readonly 修饰的 key。
+
+**实现**
+
+```ts
+export type ReadonlyKeys<T extends object> = {
+  [P in keyof T]-?: IfEquals<
+    { [Q in P]: T[P] },
+    { -readonly [Q in P]: T[P] },
+    never,
+    P
+  >
+}[keyof T]
+```
+
+**示例**
+
+```ts
+type Props = { readonly foo: string; bar: number }
+
+type ReadonlyKeysResult = ReadonlyKeys<Props> // "foo"
+```
+
+ReadonlyKeys 的实现方式和 WriteableKeys 的实现方式基本相同，区别在于 IfEquals 函数的第三、四个参数。在 WriteableKeys 中，第三个参数是 key，第四个参数默认是 never，而在 ReadonlyKeys 中颠倒过来了，原因是，当两个类型匹配成功后，则认定这两个类型是严格相同的，那么就表示当前 key 是不被 readonly 修饰的，所以在 WriteableKeys 中返回 key、在 ReadonlyKeys 中返回 never；当两个类型匹配不成功后，则认定这两个类型是不相同的。
+
+**RequiredKeys**
+RequiredKeys 用于获取对象类型中所有必选的 key。
+
+**实现**
+
+```ts
+export type RequiredKeys<T extends object> = {
+  [P in keyof T]-?: {} extends Pick<T, P> ? never : P
+}[keyof T]
+```
+
+**示例**
+
+```ts
+type RequiredProps = {
+  req: number
+  reqUndef: number | undefined
+  opt?: string
+  optUndef?: number | undefined
+}
+
+type RequiredKeysResult = RequiredKeys<RequiredProps> //"req" | "reqUndef"
+```
+
+RequiredKeys 中用到了 Pick，首先说下 Pick 是干嘛的
+
+Pick 是 Typescript 内置的泛型函数，接受两个 T, U，第一个参数 T 是一个对象类型，第二个参数 U 是联合类型，并且 U extends keyof T。Pick 用于过滤掉泛型 T 中不能兼容 U 的 key。
+
+例如：
+
+```ts
+type Props = {
+  req: number
+  reqUndef: number | undefined
+  opt?: string
+  optUndef?: number | undefined
+}
+type result = Pick<Props, 'req' | 'opt'> //  {req: number,opt?: string}
+```
+
+回到 RequiredKeys 类型函数上，在遍历泛型 T 的 key 过程中，借用空对象{}去 extends 处理过的 key(此时是一个只包含 key 的对象)，若当前 key 是可选的，那么必然是兼容的，不是我们想要的返回 never，否则是必选的，返回当前 key。
