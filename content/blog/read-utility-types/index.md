@@ -564,3 +564,40 @@ type OmitByValueExactResult = OmitByValueExact<OmitProps, string | number>
 ```
 
 相信看过之前的套路，聪明的你一定能想到 OmitByValueExact 的实现方式是和 PickByValueExact 的实现方式类似的，区别在于 IfEquals 类型函数结果返回值交换了位置，具体思路请看 PickByValueExact 的实现思路。
+
+#### Intersection
+
+Intersection 用于获取对象类型 key 的交集。
+
+**实现**
+
+```ts
+export type Intersection<T extends object, U extends object> = Pick<
+  T,
+  Extract<keyof T, keyof U> & Extract<keyof U, keyof T>
+>
+```
+
+**示例**
+
+```ts
+type IntersectionProps = {
+  name: string
+  age: number
+  visible: boolean
+  value: number
+}
+type DefaultProps = { age: number; value: number }
+// {
+//     age: number;
+//     value: number;
+// }
+type IntersectionResult = Intersection<IntersectionProps, DefaultProps>
+```
+
+Intersection 类型函数接受`<A,B>`两个对象类型，最终得到的是两个对象类型 key 的交集在 A 上的 Pick。
+所以我们只要先解两个对象类型 key 的交集，然后再对 A 进行 Pick 就 ok 了。
+
+求交集可以直接使用 Extract 泛型函数，将 A、B 使用索引操作符将 key 转为联合类型，然后使用 Extract 求两个联合类型的交集，最后对 A 进行 Pick 即可。
+
+个人认为第二个 Extract 是没有必要的因为对两个联合类型求交集，谁先谁后两个结果都是一样的。
