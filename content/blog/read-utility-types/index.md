@@ -342,3 +342,72 @@ type result = Pick<Props, 'req' | 'opt'> //  {req: number,opt?: string}
 ```
 
 回到 RequiredKeys 类型函数上，在遍历泛型 T 的 key 过程中，借用空对象{}去 extends 处理过的 key(此时是一个只包含 key 的对象)，若当前 key 是可选的，那么必然是兼容的，不是我们想要的返回 never，否则是必选的，返回当前 key。
+
+#### OptionalKeys
+
+OptionalKeys 用于获取对象类型上所有可选的 key。
+
+**实现**
+
+```ts
+export type OptionalKeys<T extends object> = {
+  [P in keyof T]-?: {} extends Pick<T, P> ? P : never
+}[keyof T]
+```
+
+**示例**
+
+```ts
+type RequiredProps = {
+  req: number
+  reqUndef: number | undefined
+  opt?: string
+  optUndef?: number | undefined
+}
+type OptionalKeysResult = OptionalKeys<RequiredProps> // "opt" | "optUndef"
+```
+
+OptionalKeys 的实现方式和 RequiredKeys 基本相同，区别在于条件类型的取值是相当的，具体细节可以看下 RequiredKeys 的实现分析。
+
+#### PickByValue
+
+在解读 RequiredKeys 类型函数的时候我们说到了 Pick 这个内置类型函数，它是根据 key 来过滤对象的 key 的，而 PickByValue 则是根据 value 的类型来过滤对象的 key。
+
+**实现**
+
+```ts
+export type PickByValue<T, K> = Pick<
+  T,
+  {
+    [P in keyof T]-?: T[P] extends K ? P : never
+  }[keyof T]
+>
+```
+
+**示例**
+
+```ts
+type PickByValueProps = {
+  req: number
+  reqUndef: number | undefined
+  opt?: string
+}
+
+type PickByValueResult = PickByValue<PickByValueProps, number> //{req: number; reqUndef: number | undefined; }
+```
+
+我们来通过结果来反推一下 PickByValue，就这个示例而言，首先我们想要的结果是过滤掉所有值类型可兼容 number 的 key，因为是过滤，所以 PickByValue 的最外层就必然要用 Pick 来做。
+
+```ts
+type PickByValue<T, K> = Pick<T, ...>
+```
+
+所以目前要实现这个函数只需要搞定第二个参数就可以了。因为第二个参数必然是 keyof T 的子集，所以我们要做就是通过 value 的类型来推出可兼容 value 类型的 key。下一步就必然要遍历 key，并且通过{}[keyof T]来获取最终的子集。
+
+```ts
+type PickByValue<T, K> = Pick<T, {
+  [P in keyof T]: ...
+}[keyof T]>
+```
+
+在遍历过程中判断`T[P]`的类型是否兼容 K 就可以了，最终结果就是实现的样子。
