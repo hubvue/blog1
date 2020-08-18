@@ -411,3 +411,156 @@ type PickByValue<T, K> = Pick<T, {
 ```
 
 在遍历过程中判断`T[P]`的类型是否兼容 K 就可以了，最终结果就是实现的样子。
+
+#### PickByValueExact
+
+PickByValueExact 是 PickByValue 的严格版
+
+**实现**
+
+```ts
+export type PickByValueExact<T, ValueType> = Pick<
+  T,
+  {
+    [Key in keyof T]-?: [ValueType] extends [T[Key]]
+      ? [T[Key]] extends [ValueType]
+        ? Key
+        : never
+      : never
+  }[keyof T]
+>
+```
+
+源码里面是双向 extends，感觉使用 IfEquals 更严格一些。
+
+```ts
+export type PickByValueExact<T, K> = Pick<
+  T,
+  {
+    [P in keyof T]-?: IfEquals<[K], [T[P]], P>
+  }[keyof T]
+>
+```
+
+**示例**
+
+```ts
+type PickByValueProps = {
+  req: number
+  reqUndef: number | string
+  opt?: string
+}
+
+type PickByValueExactResult = PickByValueExact<PickByValueProps, number> //{req: number;}
+```
+
+实现思路与 PickByValue 大致相同，区别就是判断的地方，PickByValueExact 使用 IfEquals 做严格匹配。
+
+#### Omit
+
+Omit 的作用就是反向 Pick，删除泛型 A 中可匹配泛型 B 的 key。
+
+**实现**
+
+```ts
+export type Omit<A, B extends keyof A> = Pick<A, Exclude<keyof A, B>>
+```
+
+```ts
+type OmitProps = {
+  name: string
+  age: number
+  visible: boolean
+  sex: string | number
+}
+
+// {
+//     name: string;
+//     visible: boolean;
+//     sex: string | number;
+// }
+type OmitResult = Omit<OmitProps, 'age'>
+```
+
+反向 Pick 可以借助 Pick 来做，只要对 Pick 的第二个参数做处理即可。方式就是使用 Exclude 泛型函数对 keyof A、B 取补集，获取到泛型对象 A 中过滤掉兼容泛型 B。
+
+#### OmitByValue
+
+反向 PickByValue，PickByValue 是只包含，OmitByValue 是只过滤。
+
+**实现**
+
+```ts
+export type OmitByValue<T, U> = Pick<
+  T,
+  {
+    [P in keyof T]: T[P] extends U ? never : P
+  }
+>
+```
+
+**示例**
+
+```ts
+type OmitProps = {
+  name: string
+  age: number
+  visible: boolean
+  sex: string | number
+}
+// {
+//     age: number;
+//     visible: boolean;
+//     sex: string | number;
+// }
+type OmitByValueResult = OmitByValue<OmitProps, string>
+```
+
+与 PickByValue 类似，只是将 extends 的结果交换了位置，就可以实现反向操作，具体思路请看 PickByValue 的分析。
+
+#### OmitByValueExact
+
+**实现**
+
+```ts
+export type OmitByValueExact<T, ValueType> = Pick<
+  T,
+  {
+    [Key in keyof T]-?: [ValueType] extends [T[Key]]
+      ? [T[Key]] extends [ValueType]
+        ? never
+        : Key
+      : Key
+  }[keyof T]
+>
+```
+
+源码里使用双向 extends 判断两个类型是否严格兼容，我这里用 IfEquals 函数搞了一下。
+
+```ts
+export type OmitByValueExact<A, B> = Pick<
+  A,
+  {
+    [P in keyof A]-?: IfEquals<A[P], B, never, P>
+  }[keyof A]
+>
+```
+
+**示例**
+
+```ts
+type OmitProps = {
+  name: string
+  age: number
+  visible: boolean
+  sex: string | number
+}
+// {
+//   name: string
+//   age: number
+//   visible: boolean
+// }
+type OmitByValueExactResult = OmitByValueExact<OmitProps, string | number>
+```
+
+相信看过之前的套路，聪明的你一定能想到 OmitByValueExact 的实现方式是和 PickByValueExact 的实现方式类似的，区别在于 IfEquals 类型函数结果返回值交换了位置，具体思路请看 PickByValueExact 的实现思路。
