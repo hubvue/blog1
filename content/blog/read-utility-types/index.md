@@ -601,3 +601,63 @@ Intersection 类型函数接受`<A,B>`两个对象类型，最终得到的是两
 求交集可以直接使用 Extract 泛型函数，将 A、B 使用索引操作符将 key 转为联合类型，然后使用 Extract 求两个联合类型的交集，最后对 A 进行 Pick 即可。
 
 个人认为第二个 Extract 是没有必要的因为对两个联合类型求交集，谁先谁后两个结果都是一样的。
+
+### Diff
+
+Diff 类型函数接受两个泛型变量 T、U，且 T、U 都是对象类型，用于获取泛型 U 在泛型 T 上的补集。
+
+**实现**
+
+```ts
+export type Diff<T extends object, U extends object> = Pick<
+  T,
+  Exclude<keyof T, keyof U>
+>
+```
+
+**示例**
+
+```ts
+type Props = {
+  name: string
+  age: number
+  visible: boolean
+  value: number
+}
+type Props2 = { age: number; value: number }
+// {
+//     name: string;
+//     visible: boolean;
+// }
+type DiffResult = Diff<Props, Props2>
+```
+
+经过上面类型函数中对 Pick 函数的应用，我们应该已经知道 Pick 是用来处理对象类型，并返回对象类型的子集，因此求补集就应该从两个对象类型的 key 下手。开始已经提到 Exclude 用于求两个联合类型的补集，因此就可以通过索引类型修饰符获取到两个对象类型的 key 的联合类型，然后再通过 Exclude 取补集，最后通过 Pick 取 T 的子集即可。
+
+#### Overwrite
+
+#### Assign
+
+#### Unionize
+
+#### PromiseType
+
+#### DeepReadonly
+
+#### DeepRequired
+
+#### DeepNonNullable
+
+#### DeepPartial
+
+#### Optional
+
+#### ValuesType
+
+#### ArgumentsRequired
+
+#### UnionToIntersection
+
+#### TupleToUnion
+
+#### TupleToIntersection
