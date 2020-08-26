@@ -876,10 +876,64 @@ type Props = {
 type ValuesTypeResult = ValuesType<Props>
 ```
 
-ValuesType 处理参数主要分为两部分：对数组的处理和对对象的处理。对数组的处理使用`T[number]`非常优雅，并且是元组类型转联合类型对简单的方式；对对象的处理用的就比较多了，使用索引操作符就可以了。
+ValuesType 处理参数主要分为两部分：对数组的处理和对对象的处理。对数组的处理使用`T[number]`非常优雅，并且是元组类型转联合类型最简单的方式；对对象的处理用的就比较多了，使用索引操作符就可以了。
 
 #### ArgumentsRequired
 
-#### UnionToIntersection
+ArgumentsRequired 与 Optional 类似，用于将对象的某些属性变成必选的
+
+**实现**
+
+```ts
+export type ArgumentsRequired<
+  T extends object,
+  K extends keyof T = keyof T,
+  I = Omit<T, K> & Required<Pick<T, K>>
+> = Pick<I, keyof I>
+```
+
+**示例**
+
+```ts
+type Props = {
+  name?: string
+  age?: number
+  visible?: boolean
+}
+// {
+//   name: string
+//   age: number
+//   visible: boolean
+// }
+type ArgumentsRequiredResult = ArgumentsRequired<Props>
+```
+
+实现方式的解析可以看 Optional，这里就不多说了。
 
 #### TupleToUnion
+
+在 ValuesType 中已经提到一个特别简单的方式。还有一种方式也值得学习一下。
+
+在类型系统中，元组类型是兼容数组类型。
+
+```ts
+// 'true'
+type ret = [number, string] extends Array<any> ? 'true' : 'false'
+```
+
+因此就可以使用 infer 来推断出数组的泛型类型。
+
+**实现**
+
+```ts
+export type TupleToUnion<T extends any[]> = T extends Array<infer U> ? U : never
+```
+
+**示例**
+
+```ts
+// string | number
+type TupleToUnionResult = TupleToUnion<[string, number]>
+```
+
+#### UnionToIntersection
