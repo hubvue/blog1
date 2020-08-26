@@ -636,6 +636,61 @@ type DiffResult = Diff<Props, Props2>
 
 #### Overwrite
 
+Overwrite 接收两个泛型参数 T、U，且都为对象类型，作用是若 U 中属性在 T 中也存在，则覆盖 T 中的属性。
+
+**实现**
+
+```ts
+export type Overwrite<
+  T extends object,
+  U extends Object,
+  I = Diff<T, U> & Intersection<U, T>
+> = Pick<I, keyof I>
+```
+
+**示例**
+
+```ts
+type Props1 = { name: string; age: number; visible: boolean }
+type Props2 = { age: string; other: string }
+
+// {
+//   name: string
+//   age: string
+//   visible: boolean
+// }
+type OverwriteResult = Overwrite<Props1, Props2>
+```
+
+如果对 Diff、Intersection 这两个泛型函数了解的话，那么 Overwrite 就小菜一碟了。我们知道 Diff 用于获取两个泛型参数的补集，Intersection 用于获取两个泛型参数的交集，最后合成交叉类型即可。
+
+你可能会疑问，结果直接`Diff<T, U> & Intersection<U, T>`就可以了，为什么还要使用 Pick 多一次遍历呢？
+
+我们分别用两种情况看一下类型推断结果。
+
+1. 使用 Pick
+
+```ts
+type OverwriteResult = Overwrite<Props1, Props2>
+//  =>
+// {
+//   name: string
+//   age: string
+//   visible: boolean
+// }
+```
+
+2. 不使用 Pick
+
+```ts
+export type Overwrite<T extends object, U extends Object> = Diff<T, U> &
+  Intersection<U, T>
+type OverwriteResult = Overwrite<Props1, Props2>
+// => Pick<OverwriteProps, "name" | "visible"> & Pick<NewProps, "age">
+```
+
+可以看出不使用 Pick 的结果对于用户是不友好的，无法直接从 IDE 中看到类型推断的结果。
+
 #### Assign
 
 #### Unionize
