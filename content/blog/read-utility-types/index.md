@@ -937,3 +937,27 @@ type TupleToUnionResult = TupleToUnion<[string, number]>
 ```
 
 #### UnionToIntersection
+
+UnionToIntersection 用于将联合类型转为交叉类型
+
+**实现**
+
+```ts
+export type UnionToIntersection<T> = (T extends any
+? (arg: T) => void
+: never) extends (arg: infer V) => void
+  ? V
+  : never
+```
+
+**示例**
+
+```ts
+type UnionToIntersectionResult = UnionToIntersection<
+  { name: string } | { age: number } | { visible: boolean }
+>
+```
+
+说实话，UnionToIntersection 这个泛型函数还是要好好理解的，这里用到了 Typescript 类型系统中的概念，`同一类型变量的多个候选类型将会被推断为交叉类型`，这是 TS 类型系统函数参数位置逆变的知识。[逆变与协变](https://jkchao.github.io/typescript-book-chinese/tips/covarianceAndContravariance.html#%E5%8D%8F%E5%8F%98%E4%B8%8E%E9%80%86%E5%8F%98)
+
+已知泛型函数接受的是一个联合类型，通过分布式条件类型构建同一类型变量多个候选类型，然后再使用延时推断获取到 V 的类型。
