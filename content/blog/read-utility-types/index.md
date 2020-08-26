@@ -693,17 +693,124 @@ type OverwriteResult = Overwrite<Props1, Props2>
 
 #### Assign
 
+Assign 比 Overwrite 的能力更强大一些。它接收两个泛型参数 T、U，且都为对象类型，作用是若 U 中的属性在 T 中存在则覆盖，不存在则添加。
+
+**实现**
+
+```ts
+export type Assign<
+  T extends object,
+  U extends object,
+  I = Diff<T, U> & Intersection<U, T> & Diff<U, T>
+> = Pick<I, keyof I>
+```
+
+**示例**
+
+```ts
+type Props1 = { name: string; age: number; visible: boolean }
+type Props2 = { age: string; other: string }
+// {
+//     name: string;
+//     age: string;
+//     visible: boolean;
+//     other: string;
+// }
+type AssignResult = Assign<Props1, Props2>
+```
+
+Assign 在实现上与 Overwrite 区别是在处理 I 上比 Overwrite 多&了`Diff<U, T>`,Overwrite 的作用是覆盖已有元素，那么实现 Assign 只需要将在 T 上不存在的属性合并到 T 上就 ok 了，因此就可以使用`Diff<U, T>`的方式获取到在 U 上而不再 T 上的属性，最后与前面和为交叉类型。
+
 #### Unionize
+
+Unionize 接收一个泛型参数，且为对象类型，作用是将对象类型转为单独 key 对象的联合类型。
+
+**实现**
+
+```ts
+export type Unionize<T extends object> = {
+  [P in keyof T]: { [Q in P]: T[P] }
+}[keyof T]
+```
+
+**示例**
+
+```ts
+type Props = { name: string; age: number; visible: boolean }
+// {
+//     name: string;
+// } | {
+//     age: number;
+// } | {
+//     visible: boolean;
+// }
+type UnionizeResult = Unionize<Props>
+```
+
+起初看到这个是懵逼的，然后仔细想一下，发现已经写过很多这种方式了，直接遍历对象 key，然后将 value 构造成对象，最后在通过索引操作符取所有值的联合类型就可以了。
 
 #### PromiseType
 
+PromiseType 用于获取 Promise 的泛型类型。
+
+**实现**
+
+```ts
+export type PromiseType<T extends Promise<unknown>> = T extends Promise<infer V>
+  ? V
+  : never
+```
+
+**示例**
+
+```ts
+// string
+type PromiseTypeResult = PromiseType<Promise<string>>
+```
+
+PromiseType 中用到了 infer，infer 的作用是在条件类型中做延时推断，infer 用到绝佳可以实现强大的功能。
+
+PromiseType 将泛型 T extends Promise，并在 Promise 泛型类型使用 infer 推断其类型，若 T 为 Promise 类型，则
+V 就是 Promise 的泛型类型，否则为 never。
+
+_思考一下，如果深度解析 Promise 泛型呢？_ 🤔
+
 #### DeepReadonly
 
-#### DeepRequired
+`utility-types`中`DeepX`递归类型基本上相同，`X`的逻辑在上面已经分析过了，主要分析是 `Deep` 逻辑。
 
-#### DeepNonNullable
+**实现**
 
-#### DeepPartial
+```ts
+export type DeepReadonly<T> = T extends ((...args: any[]) => any) | Primitive
+  ? T
+  : T extends _DeepReadonlyArray<infer U>
+  ? _DeepReadonlyArray<U>
+  : T extends _DeepReadonlyObject<infer V>
+  ? _DeepReadonlyObject<V>
+  : T
+export interface _DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
+export type _DeepReadonlyObject<T> = {
+  readonly [P in keyof T]: DeepReadonly<T[P]>
+}
+```
+
+**示例**
+
+```ts
+type Props = {
+  first?: {
+    second?: {
+      name?: string
+    }
+  }
+}
+type DeepReadonlyResult = DeepReadonly<Props>
+```
+
+源码中分别对数组和对象类型做了处理，可以看到`_DeepReadonlyObject`泛型函数在遍历 T 的过程中再次调用`DeepReadonly`进行递归解析。
+
+_思考一下，为什么没有循环引用呢？_ 🤔
 
 #### Optional
 
