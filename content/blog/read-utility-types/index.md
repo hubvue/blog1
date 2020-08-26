@@ -814,12 +814,72 @@ _思考一下，为什么没有循环引用呢？_ 🤔
 
 #### Optional
 
+Optional 接收两个泛型参数 T、K，且 T 为对象类型，K 为 T 所有 key 联合类型的子集，作用是 T 中可兼容 K 的属性转换为可选的，默认是全部。
+
+**实现**
+
+```ts
+export type Optional<
+  T extends object,
+  K extends keyof T = keyof T,
+  I = Omit<T, K> & Partial<Pick<T, K>>
+> = Pick<I, keyof I>
+```
+
+**示例**
+
+```ts
+type Props = {
+  first: string
+  second: number
+  third: boolean
+}
+// {
+//   first?: string
+//   second?: number
+//   third: boolean
+// }
+type OptionsalResult = Optional<Props, 'first' | 'second'>
+```
+
+我们可以先想一下，要怎么做才能实现这样的功能。
+
+既然要处理部分属性，所以我们可以先将这部分属性删除，等处理好了之后再合并过来，没错，源码就是这么干的。
+
+如果你是按照顺序读下来的，肯定已经 Omit、Pick 这两个泛型函数的作用了(Omit 只删除、Pick 只保留，忘了的话可以翻上去看看)，因此我们就可以先使用 Omit 将将要处理的属性先删除，然后使用 Pick 只保留将要处理的属性并使用 Partial 泛型函数处理，最后再使用交叉类型将二者合并起来。
+
 #### ValuesType
+
+ValuesType 接收一个泛型参数，可以是数组或对象，用于获取值的联合类型。数组在这里较多的指元组，因为普通数组所有元素的类型相同，就没必要联合了。
+
+**实现**
+
+```ts
+export type ValuesType<
+  T extends Array<any> | ReadonlyArray<any> | ArrayLike<any> | object
+> = T extends Array<any> | ReadonlyArray<any> | ArrayLike<any>
+  ? T[number]
+  : T extends object
+  ? T[keyof T]
+  : never
+```
+
+**示例**
+
+```ts
+type Props = {
+  first: string
+  second: number
+  third: boolean
+}
+// string | number | boolean
+type ValuesTypeResult = ValuesType<Props>
+```
+
+ValuesType 处理参数主要分为两部分：对数组的处理和对对象的处理。对数组的处理使用`T[number]`非常优雅，并且是元组类型转联合类型对简单的方式；对对象的处理用的就比较多了，使用索引操作符就可以了。
 
 #### ArgumentsRequired
 
 #### UnionToIntersection
 
 #### TupleToUnion
-
-#### TupleToIntersection
